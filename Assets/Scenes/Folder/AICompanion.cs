@@ -15,12 +15,12 @@ public class AICompanion : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
 
-        EnqueueAction(MoveAndWait(FindObjectWithTypes(new List<ObjectInfo.ObjectType> { ObjectInfo.ObjectType.Cube, ObjectInfo.ObjectType.Yellow }).transform));
-        EnqueueAction(PickUpAndWait(FindObjectWithTypes(new List<ObjectInfo.ObjectType> { ObjectInfo.ObjectType.Cube, ObjectInfo.ObjectType.Yellow })));
-        EnqueueAction(MoveAndWait(FindObjectWithTypes(new List<ObjectInfo.ObjectType> { ObjectInfo.ObjectType.PressurePad }).transform));
-        EnqueueAction(PlaceAndWait());
+        //EnqueueAction(MoveAndWait(FindObjectWithTypes(new List<ObjectInfo.ObjectType> { ObjectInfo.ObjectType.Cube, ObjectInfo.ObjectType.Yellow }).transform));
+        //EnqueueAction(PickUpAndWait(FindObjectWithTypes(new List<ObjectInfo.ObjectType> { ObjectInfo.ObjectType.Cube, ObjectInfo.ObjectType.Yellow })));
+        //EnqueueAction(MoveAndWait(FindObjectWithTypes(new List<ObjectInfo.ObjectType> { ObjectInfo.ObjectType.PressurePad }).transform));
+        //EnqueueAction(PlaceAndWait());
 
-        StartCoroutine(ProcessQueue());
+        //StartCoroutine(ProcessQueue());
     }
 
     private void EnqueueAction(IEnumerator action)
@@ -86,7 +86,7 @@ public class AICompanion : MonoBehaviour
         return null;
     }
 
-    private void Move(Transform target)
+    public void Move(Transform target)
     {
         agent.SetDestination(target.position - (target.position - transform.position).normalized);
     }
