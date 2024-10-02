@@ -173,7 +173,7 @@ namespace UnityEngine.XR.Hands.Samples.GestureSample
         }
 
         void OnDisable() => m_HandTrackingEvents.jointsUpdated.RemoveListener(OnJointsUpdated);
-
+        
         void OnJointsUpdated(XRHandJointsUpdatedEventArgs eventArgs)
         {
             if (!isActiveAndEnabled || Time.timeSinceLevelLoad < m_TimeOfLastConditionCheck + m_GestureDetectionInterval)
