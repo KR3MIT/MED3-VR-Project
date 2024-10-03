@@ -181,6 +181,8 @@ namespace UnityEngine.XR.Hands.Samples.GestureSample
                 }
             }
 
+
+            //second gesture detection
             if (m_WaitingForSecondGesture)
             {
                 var secondGestureDetected =
@@ -193,9 +195,16 @@ namespace UnityEngine.XR.Hands.Samples.GestureSample
                     m_GesturePerformed?.Invoke();
                     m_WaitingForSecondGesture = false;
                 }
+                else if (!secondGestureDetected && m_PerformedTriggered)
+                {
+                    m_GestureEnded?.Invoke();
+                    m_PerformedTriggered = false;
+                    m_WaitingForSecondGesture = false;
+                }
                 else if (Time.timeSinceLevelLoad - m_FirstGesturePerformedTime > m_SecondGestureTimeWindow)
                 {
                     m_WaitingForSecondGesture = false;
+                    m_GestureEnded?.Invoke();
                 }
             }
 
