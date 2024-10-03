@@ -54,6 +54,7 @@ namespace UnityEngine.XR.Hands.Samples.GestureSample
         XRHandPose m_SecondHandPose;//2
         bool m_WasDetected;
         bool m_PerformedTriggered;
+        bool m_SecondGesturePerformedTriggered;//2
         bool m_WaitingForSecondGesture;//2
         float m_TimeOfLastConditionCheck;
         float m_HoldStartTime;
@@ -181,8 +182,7 @@ namespace UnityEngine.XR.Hands.Samples.GestureSample
                 }
             }
 
-
-            //second gesture detection
+            // Second gesture detection
             if (m_WaitingForSecondGesture)
             {
                 var secondGestureDetected =
@@ -192,19 +192,26 @@ namespace UnityEngine.XR.Hands.Samples.GestureSample
 
                 if (secondGestureDetected && Time.timeSinceLevelLoad - m_FirstGesturePerformedTime <= m_SecondGestureTimeWindow)
                 {
-                    m_GesturePerformed?.Invoke();
-                    m_WaitingForSecondGesture = false;
+                    if (!m_SecondGesturePerformedTriggered)
+                    {
+                        m_GesturePerformed?.Invoke();
+                        m_SecondGesturePerformedTriggered = true;
+                    }
                 }
-                else if (!secondGestureDetected && m_PerformedTriggered)
+                else if (!secondGestureDetected && m_SecondGesturePerformedTriggered)
                 {
                     m_GestureEnded?.Invoke();
-                    m_PerformedTriggered = false;
+                    m_SecondGesturePerformedTriggered = false;
                     m_WaitingForSecondGesture = false;
                 }
                 else if (Time.timeSinceLevelLoad - m_FirstGesturePerformedTime > m_SecondGestureTimeWindow)
                 {
                     m_WaitingForSecondGesture = false;
-                    m_GestureEnded?.Invoke();
+                    if (m_SecondGesturePerformedTriggered)
+                    {
+                        m_GestureEnded?.Invoke();
+                        m_SecondGesturePerformedTriggered = false;
+                    }
                 }
             }
 
