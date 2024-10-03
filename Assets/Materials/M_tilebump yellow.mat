@@ -39,6 +39,10 @@ Material:
         m_Texture: {fileID: 2800000, guid: a4199ae2bd49a2d4b8c4d2ad1f32e51d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _OPA:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _ROG:
         m_Texture: {fileID: 2800000, guid: e5e2b6d57f1e60a4db5df6e60b750f5b, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -59,12 +63,20 @@ Material:
     m_Floats:
     - _AO_strengh: 1
     - _MET_strengh: 1
+    - _Opacity: 0.5
+    - _Opacity_texture: 1
     - _QueueControl: 0
     - _QueueOffset: 0
+    - _Red_channel_as_emi: 1
+    - _Red_chn_as_emi_and_bc: 0
     - _SMO: 0.5
     - _TIle: 0.333
     - _Triplanar: 1
     m_Colors:
+    - _Buttom: {r: 0, g: 0, b: 0, a: 0}
+    - _EMI_color: {r: 0, g: 3.5648696, b: 3.5648696, a: 0}
+    - _Middle: {r: 1, g: 1, b: 1, a: 0}
+    - _Top: {r: 1, g: 0.6640022, b: 0, a: 0}
     - _buttom: {r: 0.16862746, g: 0.16862746, b: 0.16862746, a: 0}
     - _middle: {r: 1, g: 1, b: 1, a: 0}
     - _top: {r: 0, g: 0.6420536, b: 1, a: 0}

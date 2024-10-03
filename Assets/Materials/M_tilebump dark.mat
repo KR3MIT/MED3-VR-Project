@@ -67,10 +67,15 @@ Material:
     - _Opacity_texture: 1
     - _QueueControl: 0
     - _QueueOffset: 0
+    - _Red_channel_as_emi: 0
     - _SMO: 0.5
     - _TIle: 0.333
     - _Triplanar: 1
     m_Colors:
+    - _Buttom: {r: 1, g: 1, b: 1, a: 0}
+    - _EMI_color: {r: 1, g: 0, b: 0, a: 0}
+    - _Middle: {r: 0.1254902, g: 0.1254902, b: 0.1254902, a: 0}
+    - _Top: {r: 0.122641504, g: 0.122641504, b: 0.122641504, a: 0}
     - _buttom: {r: 0, g: 0, b: 0, a: 0}
     - _middle: {r: 0, g: 0, b: 0, a: 0}
     - _top: {r: 0.16862746, g: 0.16862746, b: 0.16862746, a: 0}
