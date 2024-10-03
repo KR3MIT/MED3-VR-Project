@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_tilebump yellow
-  m_Shader: {fileID: -6465566751694194690, guid: e0d162102ad58e9479710a972563928c, type: 3}
+  m_Name: M_fakeworld
+  m_Shader: {fileID: -6465566751694194690, guid: a1529dd688b154646bf822ca49c10ea5, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -24,27 +24,31 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _AO:
-        m_Texture: {fileID: 2800000, guid: 2dc7de87fbc978a48b944e457b3885b5, type: 3}
+        m_Texture: {fileID: 2800000, guid: e639b52c2c0b8ab45b91122227d5a2e4, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MET:
-        m_Texture: {fileID: 2800000, guid: 34ad1eeefc59cb8459dae346f647d8b0, type: 3}
+        m_Texture: {fileID: 2800000, guid: fc9dbc8d2f987be44b236ea50299e334, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Mask:
-        m_Texture: {fileID: 2800000, guid: cb9bc8cc847379741abd852a23144230, type: 3}
+        m_Texture: {fileID: 2800000, guid: 16f46a0cd24509943aeca131253be708, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NRM:
-        m_Texture: {fileID: 2800000, guid: a4199ae2bd49a2d4b8c4d2ad1f32e51d, type: 3}
+        m_Texture: {fileID: 2800000, guid: 383e74a860f832d4d9f1172d86c696c7, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OPA:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _ROG:
-        m_Texture: {fileID: 2800000, guid: e5e2b6d57f1e60a4db5df6e60b750f5b, type: 3}
+    - _World_texture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _fake_texture:
+        m_Texture: {fileID: 2800000, guid: 78431ce7415081c448b62aeaac16bdb0, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -61,27 +65,29 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _AO_strengh: 1
     - _MET_strengh: 1
     - _Opacity: 0.5
     - _Opacity_texture: 1
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Red_channel_as_emi: 1
     - _Red_chn_as_emi_and_bc: 1
-    - _SMO: 0.5
+    - _SMO: 1
     - _TIle: 0.333
     - _Triplanar: 1
+    - _World_tile: 0
+    - _fake_tile: 0.7
     m_Colors:
     - _Buttom: {r: 0, g: 0, b: 0, a: 0}
-    - _EMI_color: {r: 0, g: 0.1682966, b: 5.0353613, a: 0}
+    - _EMI_color: {r: 1, g: 0, b: 0, a: 0}
     - _Middle: {r: 1, g: 1, b: 1, a: 0}
-    - _Top: {r: 1, g: 0.6640022, b: 0, a: 0}
-    - _buttom: {r: 0.16862746, g: 0.16862746, b: 0.16862746, a: 0}
-    - _middle: {r: 1, g: 1, b: 1, a: 0}
-    - _top: {r: 0, g: 0.6420536, b: 1, a: 0}
+    - _Top: {r: 1, g: 1, b: 1, a: 0}
+    - _World_offset: {r: 0, g: 0, b: 0, a: 0}
+    - _fake_offset: {r: 0, g: 0, b: 0.5, a: 0}
+    - _fake_offset_time: {r: 0, g: 0, b: 0.1, a: 0}
+    - _fake_tile: {r: 1, g: 0.7, b: 0.5, a: 0}
+    - _offset_over_time: {r: 0.1, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
---- !u!114 &5780616332113102317
+--- !u!114 &2944047140413467559
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
