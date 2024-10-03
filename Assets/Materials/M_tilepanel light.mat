@@ -68,6 +68,7 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Red_channel_as_emi: 0
+    - _Red_chn_as_emi_and_bc: 0
     - _SMO: 0.1
     - _TIle: 0.333
     - _Triplanar: 1

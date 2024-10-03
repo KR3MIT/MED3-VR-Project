@@ -105,4 +105,10 @@ public class AICompanion : MonoBehaviour
         carryingObject.transform.SetParent(null);
         carryingObject = null;
     }
+
+    public void Hello()
+    {
+        //play wave anim
+        Debug.Log("Hello!");
+    }
 }

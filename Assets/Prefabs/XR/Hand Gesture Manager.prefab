@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 5771593464035393205}
   - component: {fileID: 3302222693345986266}
   m_Layer: 0
-  m_Name: Right Hand Palm Flat
+  m_Name: Right Hand Take
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -142,7 +142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_HandTrackingEvents: {fileID: 7734049674605207233}
-  m_HandShapeOrPose: {fileID: 11400000, guid: e7b5bfc4e711f9049b4ad03ade500a21, type: 2}
+  m_HandShapeOrPose: {fileID: 11400000, guid: 6274228f12ec469498c4208c1e56479e, type: 2}
   m_TargetTransform: {fileID: 0}
   m_GesturePerformed:
     m_PersistentCalls:
@@ -156,7 +156,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: palm flat (right)
+          m_StringArgument: Take item
           m_BoolArgument: 0
         m_CallState: 2
   m_GestureEnded:
@@ -171,11 +171,14 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: cancel
           m_BoolArgument: 0
         m_CallState: 2
   m_MinimumHoldTime: 0.2
   m_GestureDetectionInterval: 0.1
+  m_SecondHandShapeOrPose: {fileID: 11400000, guid: 4bf837d7bbd56464b97d3af4032220b8, type: 2}
+  m_SecondGestureTimeWindow: 3
+  m_UseTwoPartDetection: 1
 --- !u!1 &5793429630809847619
 GameObject:
   m_ObjectHideFlags: 0
@@ -255,7 +258,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &7935258228732657658
 RectTransform:
   m_ObjectHideFlags: 0
@@ -458,12 +461,39 @@ MonoBehaviour:
   m_TargetTransform: {fileID: 0}
   m_GesturePerformed:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6715286679868353748}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: epic shit
+          m_BoolArgument: 0
+        m_CallState: 2
   m_GestureEnded:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6715286679868353748}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_MinimumHoldTime: 0.2
   m_GestureDetectionInterval: 0.1
+  m_SecondHandShapeOrPose: {fileID: 11400000, guid: b1b759cfdab277e42805ae0212c3c9ad, type: 2}
+  m_SecondGestureTimeWindow: 3
+  m_UseTwoPartDetection: 1
 --- !u!1 &8461006559376973568
 GameObject:
   m_ObjectHideFlags: 0
@@ -543,3 +573,6 @@ MonoBehaviour:
         m_CallState: 2
   m_MinimumHoldTime: 0.2
   m_GestureDetectionInterval: 0.1
+  m_SecondHandShapeOrPose: {fileID: 0}
+  m_SecondGestureTimeWindow: 2
+  m_UseTwoPartDetection: 0

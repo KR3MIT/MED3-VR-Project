@@ -74,7 +74,7 @@ Material:
     - _Triplanar: 1
     m_Colors:
     - _Buttom: {r: 0, g: 0, b: 0, a: 0}
-    - _EMI_color: {r: 0, g: 3.5648696, b: 3.5648696, a: 0}
+    - _EMI_color: {r: 0, g: 4.759381, b: 4.759381, a: 0}
     - _Middle: {r: 1, g: 1, b: 1, a: 0}
     - _Top: {r: 1, g: 0.6640022, b: 0, a: 0}
     - _buttom: {r: 0.16862746, g: 0.16862746, b: 0.16862746, a: 0}
