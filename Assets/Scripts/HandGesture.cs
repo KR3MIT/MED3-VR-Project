@@ -37,13 +37,27 @@ namespace UnityEngine.XR.Hands.Samples.GestureSample
         [Tooltip("The interval at which the gesture detection is performed.")]
         float m_GestureDetectionInterval = 0.1f;
 
+        [Header("Second Hand Gesture")]
+        [SerializeField]
+        ScriptableObject m_SecondHandShapeOrPose;
+
+        [SerializeField]
+        float m_SecondGestureTimeWindow = 2.0f;
+
+        [SerializeField]
+        bool m_UseTwoPartDetection = false;
+
 
         XRHandShape m_HandShape;
         XRHandPose m_HandPose;
+        XRHandShape m_SecondHandShape;//2
+        XRHandPose m_SecondHandPose;//2
         bool m_WasDetected;
         bool m_PerformedTriggered;
+        bool m_WaitingForSecondGesture;//2
         float m_TimeOfLastConditionCheck;
         float m_HoldStartTime;
+        float m_FirstGesturePerformedTime;//2
 
         /// <summary>
         /// The hand tracking events component to subscribe to receive updated joint data to be used for gesture detection.
@@ -114,8 +128,14 @@ namespace UnityEngine.XR.Hands.Samples.GestureSample
 
             m_HandShape = m_HandShapeOrPose as XRHandShape;
             m_HandPose = m_HandShapeOrPose as XRHandPose;
+            m_SecondHandShape = m_SecondHandShapeOrPose as XRHandShape;
+            m_SecondHandPose = m_SecondHandShapeOrPose as XRHandPose;
+
             if (m_HandPose != null && m_HandPose.relativeOrientation != null)
                 m_HandPose.relativeOrientation.targetTransform = m_TargetTransform;
+
+            if (m_SecondHandPose != null && m_SecondHandPose.relativeOrientation != null)
+                m_SecondHandPose.relativeOrientation.targetTransform = m_TargetTransform;
         }
 
         void OnDisable() => m_HandTrackingEvents.jointsUpdated.RemoveListener(OnJointsUpdated);
@@ -138,7 +158,6 @@ namespace UnityEngine.XR.Hands.Samples.GestureSample
             {
                 m_PerformedTriggered = false;
                 m_GestureEnded?.Invoke();
-                
             }
 
             m_WasDetected = detected;
@@ -148,9 +167,35 @@ namespace UnityEngine.XR.Hands.Samples.GestureSample
                 var holdTimer = Time.timeSinceLevelLoad - m_HoldStartTime;
                 if (holdTimer > m_MinimumHoldTime)
                 {
+                    if (m_UseTwoPartDetection)
+                    {
+                        m_FirstGesturePerformedTime = Time.timeSinceLevelLoad;
+                        m_PerformedTriggered = true;
+                        m_WaitingForSecondGesture = true;
+                    }
+                    else
+                    {
+                        m_GesturePerformed?.Invoke();
+                        m_PerformedTriggered = true;
+                    }
+                }
+            }
+
+            if (m_WaitingForSecondGesture)
+            {
+                var secondGestureDetected =
+                    m_HandTrackingEvents.handIsTracked &&
+                    m_SecondHandShape != null && m_SecondHandShape.CheckConditions(eventArgs) ||
+                    m_SecondHandPose != null && m_SecondHandPose.CheckConditions(eventArgs);
+
+                if (secondGestureDetected && Time.timeSinceLevelLoad - m_FirstGesturePerformedTime <= m_SecondGestureTimeWindow)
+                {
                     m_GesturePerformed?.Invoke();
-                    m_PerformedTriggered = true;
-                    
+                    m_WaitingForSecondGesture = false;
+                }
+                else if (Time.timeSinceLevelLoad - m_FirstGesturePerformedTime > m_SecondGestureTimeWindow)
+                {
+                    m_WaitingForSecondGesture = false;
                 }
             }
 
