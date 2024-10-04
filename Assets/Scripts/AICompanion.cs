@@ -27,12 +27,14 @@ public class AICompanion : MonoBehaviour
         Debug.Log("Which object?");
     }
 
-    public void DefineObjectType(ObjectType objectType)
+    public void DefineObjectType(string objectTypeString)
     {
         if (!canDefine)
         {
             return;
         }
+        ObjectType objectType = (ObjectType)System.Enum.Parse(typeof(ObjectType), objectTypeString);
+
         currentTypes.Add(objectType);
         canDefine = false;
         Debug.Log("Object defined: " + objectType);
@@ -55,7 +57,6 @@ public class AICompanion : MonoBehaviour
     {
         if (FindObjectsWithTypes(types).Count > 1)
         {
-            Debug.Log("There are multiple objects of type " + types + ". Please specify.");
             canDefine = true;
             return true;
         }
