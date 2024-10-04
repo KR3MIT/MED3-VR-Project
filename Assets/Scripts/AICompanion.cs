@@ -2,88 +2,64 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using ObjectType = ObjectInfo.ObjectType;
 
 public class AICompanion : MonoBehaviour
 {
     int currentLevel = 0;
     private NavMeshAgent agent;
     private ObjectInfo carryingObject;
-    private Queue<IEnumerator> actionQueue = new Queue<IEnumerator>();
-    private bool isProcessingQueue = false;
+    private List<ObjectType> currentTypes = new List<ObjectInfo.ObjectType>();
+    private bool canDefine = false;
+
 
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-
-        //EnqueueAction(MoveAndWait(FindObjectWithTypes(new List<ObjectInfo.ObjectType> { ObjectInfo.ObjectType.Cube, ObjectInfo.ObjectType.Yellow }).transform));
-        //EnqueueAction(PickUpAndWait(FindObjectWithTypes(new List<ObjectInfo.ObjectType> { ObjectInfo.ObjectType.Cube, ObjectInfo.ObjectType.Yellow })));
-        //EnqueueAction(MoveAndWait(FindObjectWithTypes(new List<ObjectInfo.ObjectType> { ObjectInfo.ObjectType.PressurePad }).transform));
-        //EnqueueAction(PlaceAndWait());
-
-        //StartCoroutine(ProcessQueue());
     }
 
-    private void EnqueueAction(IEnumerator action)
+    
+
+    public void MoveAndTakeStart()
     {
-        actionQueue.Enqueue(action);
+        currentTypes.Clear();
+        canDefine = true;
+        Debug.Log("Which object?");
     }
 
-    private IEnumerator ProcessQueue()
+    public void DefineObjectType(ObjectType objectType)
     {
-        if (isProcessingQueue)
-            yield break;
-
-        isProcessingQueue = true;
-
-        while (actionQueue.Count > 0)
+        if (!canDefine)
         {
-            yield return StartCoroutine(actionQueue.Dequeue());
+            return;
         }
+        currentTypes.Add(objectType);
+        canDefine = false;
+        Debug.Log("Object defined: " + objectType);
 
-        isProcessingQueue = false;
-    }
-
-    private IEnumerator MoveAndWait(Transform target)
-    {
-        Move(target);
-        while (agent.pathPending || agent.remainingDistance > agent.stoppingDistance)
+        if(CheckMultiple(currentTypes))
         {
-            yield return null;
+            Debug.Log("There are multiple objects of type " + currentTypes + ". Please specify.");
+            canDefine = true;
+            return;
+        }
+        else
+        {
+            Debug.Log("Only one object found moving proceeding to move and take");
+            ObjectInfo objectInfo = FindObjectsWithTypes(currentTypes)[0];
+            Move(objectInfo.transform);
         }
     }
 
-    private IEnumerator PickUpAndWait(ObjectInfo obj)
+    private bool CheckMultiple(List<ObjectType> types)
     {
-        PickUp(obj);
-        yield return null;
-    }
-
-    private IEnumerator PlaceAndWait()
-    {
-        Place();
-        yield return null;
-    }
-
-    private ObjectInfo FindObjectWithTypes(List<ObjectInfo.ObjectType> types)
-    {
-        foreach (ObjectInfo obj in ObjectInfo.objectList[currentLevel])
+        if (FindObjectsWithTypes(types).Count > 1)
         {
-            bool allTypesMatch = true;
-            foreach (ObjectInfo.ObjectType type in types)
-            {
-                if (!obj.types.Contains(type))
-                {
-                    allTypesMatch = false;
-                    break;
-                }
-            }
-
-            if (allTypesMatch)
-            {
-                return obj;
-            }
+            Debug.Log("There are multiple objects of type " + types + ". Please specify.");
+            canDefine = true;
+            return true;
         }
-        return null;
+        return false;
     }
 
     public void Move(Transform target)
@@ -111,4 +87,65 @@ public class AICompanion : MonoBehaviour
         //play wave anim
         Debug.Log("Hello!");
     }
+
+
+    #region Helper methods
+    //private ObjectInfo FindObjectWithTypes(List<ObjectType> types)
+    //{
+    //    foreach (ObjectInfo obj in ObjectInfo.objectList[currentLevel])
+    //    {
+    //        bool allTypesMatch = true;
+    //        foreach (ObjectType type in types)
+    //        {
+    //            if (!obj.types.Contains(type))
+    //            {
+    //                allTypesMatch = false;
+    //                break;
+    //            }
+    //        }
+
+    //        if (allTypesMatch)
+    //        {
+    //            return obj;
+    //        }
+    //    }
+    //    return null;
+    //}
+
+    private List<ObjectInfo> FindObjectsWithTypes(List<ObjectType> types)
+    {
+        List<ObjectInfo> objectInfos = new List<ObjectInfo>();
+        foreach (ObjectInfo obj in ObjectInfo.objectList[currentLevel])
+        {
+            bool allTypesMatch = true;
+            foreach (ObjectType type in types)
+            {
+                if (!obj.types.Contains(type))
+                {
+                    allTypesMatch = false;
+                    break;
+                }
+            }
+
+            if (allTypesMatch)
+            {
+                objectInfos.Add(obj);
+            }
+        }
+        return objectInfos;
+    }
+
+    private List<ObjectInfo> FindObjectsWithTypes(ObjectType type)
+    {
+        List<ObjectInfo> objects = new List<ObjectInfo>();
+        foreach (ObjectInfo obj in ObjectInfo.objectList[currentLevel])
+        {
+            if (obj.types.Contains(type))
+            {
+                objects.Add(obj);
+            }
+        }
+        return objects;
+    }
+    #endregion
 }
