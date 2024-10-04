@@ -9,15 +9,15 @@ public class AICompanion : MonoBehaviour
     int currentLevel = 0;
     private NavMeshAgent agent;
     private ObjectInfo carryingObject;
-    private List<ObjectType> currentTypes = new List<ObjectInfo.ObjectType>();
+    private List<ObjectType> currentTypes = new List<ObjectType>();
     private bool canDefine = false;
     private bool actionRunning = false;
 
-    private enum State
+    public enum State
     {
         Idle,
         MovePickup,
-        MovePlacing,
+        MovePlace,
     }
 
     private State state = State.Idle;
@@ -28,11 +28,18 @@ public class AICompanion : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
     }
 
-    
+    public void StartActionDefinition(State stateToStart)
+    {
+        if (actionRunning)
+        {
+            return;
+        }
 
-    
-
-
+        currentTypes.Clear();
+        state = stateToStart;
+        canDefine = true;
+        Debug.Log("Which object?");
+    }
 
     public void DefineObjectType(string objectTypeString)
     {
@@ -59,44 +66,53 @@ public class AICompanion : MonoBehaviour
                 case State.MovePickup:
                     MovePickup();
                     break;
-                case State.MovePlacing:
-                    //MoveAndPlace();
+                case State.MovePlace:
+                    MovePlace();
                     break;
             }
         }
     }
 
-    private bool CheckMultiple(List<ObjectType> types)
-    {
-        if (FindObjectsWithTypes(types).Count > 1)
-        {
-            canDefine = true;
-            return true;
-        }
-        return false;
-    }
+    
 
     #region move and place
+    public void MoveAndPlaceStart()
+    {
+        StartActionDefinition(State.MovePlace);
+    }
+
+    private void MovePlace()
+    {
+        Debug.Log("Only one object found proceeding to move and place");
+        ObjectInfo objectInfo = FindObjectsWithTypes(currentTypes)[0];
+        StartCoroutine(MoveAndPlace(objectInfo.transform));
+    }
+
+
+    private IEnumerator MoveAndPlace(Transform target)
+    {
+        actionRunning = true;
+        Move(target);
+        while (Vector3.Distance(transform.position, target.position) > 0.5f)
+        {
+            yield return null;
+        }
+        Place();
+        actionRunning = false;
+        state = State.Idle;
+    }
 
     #endregion
 
     #region move and pickup
     public void MoveAndPickupStart()
     {
-        if (actionRunning)
-        {
-            return;
-        }
-
-        currentTypes.Clear();
-        state = State.MovePickup;
-        canDefine = true;
-        Debug.Log("Which object?");
+        StartActionDefinition(State.MovePickup);
     }
 
     private void MovePickup()
     {
-        Debug.Log("Only one object found moving proceeding to move and take");
+        Debug.Log("Only one object found proceeding to move and take");
         ObjectInfo objectInfo = FindObjectsWithTypes(currentTypes)[0];
 
         if(objectInfo.isPickUpable)
@@ -120,16 +136,18 @@ public class AICompanion : MonoBehaviour
         }
         PickUp(FindObjectsWithTypes(currentTypes)[0]);
         actionRunning = false;
+        state= State.Idle;
     }
 
     #endregion
 
-    public void Move(Transform target)
+    #region actions
+    private void Move(Transform target)
     {
         agent.SetDestination(target.position - (target.position - transform.position).normalized);
     }
 
-    public void PickUp(ObjectInfo obj)
+    private void PickUp(ObjectInfo obj)
     {
         obj.transform.SetParent(transform);
         obj.transform.localPosition = Vector3.zero + new Vector3(0, 1, 1f);
@@ -137,7 +155,7 @@ public class AICompanion : MonoBehaviour
         obj.GetComponent<Rigidbody>().isKinematic = true;
     }
 
-    public void Place()
+    private void Place()
     {
         carryingObject.GetComponent<Rigidbody>().isKinematic = false;
         carryingObject.transform.SetParent(null);
@@ -150,29 +168,9 @@ public class AICompanion : MonoBehaviour
         Debug.Log("Hello!");
     }
 
+    #endregion
 
     #region Helper methods
-    //private ObjectInfo FindObjectWithTypes(List<ObjectType> types)
-    //{
-    //    foreach (ObjectInfo obj in ObjectInfo.objectList[currentLevel])
-    //    {
-    //        bool allTypesMatch = true;
-    //        foreach (ObjectType type in types)
-    //        {
-    //            if (!obj.types.Contains(type))
-    //            {
-    //                allTypesMatch = false;
-    //                break;
-    //            }
-    //        }
-
-    //        if (allTypesMatch)
-    //        {
-    //            return obj;
-    //        }
-    //    }
-    //    return null;
-    //}
 
     private List<ObjectInfo> FindObjectsWithTypes(List<ObjectType> types)
     {
@@ -208,6 +206,16 @@ public class AICompanion : MonoBehaviour
             }
         }
         return objects;
+    }
+
+    private bool CheckMultiple(List<ObjectType> types)
+    {
+        if (FindObjectsWithTypes(types).Count > 1)
+        {
+            canDefine = true;
+            return true;
+        }
+        return false;
     }
     #endregion
 }
