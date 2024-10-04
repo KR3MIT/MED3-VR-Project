@@ -5,6 +5,7 @@ using UnityEngine;
 public class ObjectInfo : MonoBehaviour
 {
     public int level;
+    public bool isPickUpable = true;
 
     public static Dictionary<int, List<ObjectInfo>> objectList = new Dictionary<int, List<ObjectInfo>>();
 

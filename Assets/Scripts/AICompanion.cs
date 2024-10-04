@@ -11,6 +11,16 @@ public class AICompanion : MonoBehaviour
     private ObjectInfo carryingObject;
     private List<ObjectType> currentTypes = new List<ObjectInfo.ObjectType>();
     private bool canDefine = false;
+    private bool actionRunning = false;
+
+    private enum State
+    {
+        Idle,
+        MovePickup,
+        MovePlacing,
+    }
+
+    private State state = State.Idle;
 
 
     private void Start()
@@ -20,12 +30,9 @@ public class AICompanion : MonoBehaviour
 
     
 
-    public void MoveAndTakeStart()
-    {
-        currentTypes.Clear();
-        canDefine = true;
-        Debug.Log("Which object?");
-    }
+    
+
+
 
     public void DefineObjectType(string objectTypeString)
     {
@@ -33,7 +40,7 @@ public class AICompanion : MonoBehaviour
         {
             return;
         }
-        ObjectType objectType = (ObjectType)System.Enum.Parse(typeof(ObjectType), objectTypeString);
+        ObjectType objectType = (ObjectType)System.Enum.Parse(typeof(ObjectType), objectTypeString);//take the string and convert it to the enum, since unityevents wont take an enum smh
 
         currentTypes.Add(objectType);
         canDefine = false;
@@ -47,9 +54,15 @@ public class AICompanion : MonoBehaviour
         }
         else
         {
-            Debug.Log("Only one object found moving proceeding to move and take");
-            ObjectInfo objectInfo = FindObjectsWithTypes(currentTypes)[0];
-            Move(objectInfo.transform);
+            switch (state)
+            {
+                case State.MovePickup:
+                    MovePickup();
+                    break;
+                case State.MovePlacing:
+                    //MoveAndPlace();
+                    break;
+            }
         }
     }
 
@@ -62,6 +75,54 @@ public class AICompanion : MonoBehaviour
         }
         return false;
     }
+
+    #region move and place
+
+    #endregion
+
+    #region move and pickup
+    public void MoveAndPickupStart()
+    {
+        if (actionRunning)
+        {
+            return;
+        }
+
+        currentTypes.Clear();
+        state = State.MovePickup;
+        canDefine = true;
+        Debug.Log("Which object?");
+    }
+
+    private void MovePickup()
+    {
+        Debug.Log("Only one object found moving proceeding to move and take");
+        ObjectInfo objectInfo = FindObjectsWithTypes(currentTypes)[0];
+
+        if(objectInfo.isPickUpable)
+        {
+            StartCoroutine(MoveAndPickup(objectInfo.transform));
+        }
+        else
+        {
+            Debug.Log("Object is not pickable");
+        }
+    }
+
+
+    private IEnumerator MoveAndPickup(Transform target)
+    {
+        actionRunning = true;
+        Move(target);
+        while(Vector3.Distance(transform.position, target.position) > 0.5f)
+        {
+            yield return null;
+        }
+        PickUp(FindObjectsWithTypes(currentTypes)[0]);
+        actionRunning = false;
+    }
+
+    #endregion
 
     public void Move(Transform target)
     {
