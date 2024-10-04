@@ -93,7 +93,7 @@ public class AICompanion : MonoBehaviour
     {
         actionRunning = true;
         Move(target);
-        while (Vector3.Distance(transform.position, target.position) > 0.5f)
+        while (Vector3.Distance(transform.position, target.position) > 1.5f)
         {
             yield return null;
         }
@@ -130,7 +130,7 @@ public class AICompanion : MonoBehaviour
     {
         actionRunning = true;
         Move(target);
-        while(Vector3.Distance(transform.position, target.position) > 0.5f)
+        while(Vector3.Distance(transform.position, target.position) > 1.5f)
         {
             yield return null;
         }
