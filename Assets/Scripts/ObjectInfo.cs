@@ -11,11 +11,11 @@ public class ObjectInfo : MonoBehaviour
 
     public enum ObjectType
     {
-        Yellow,
+        Green,
         Cube,
         Sphere,
         Capsule,
-        PressurePad,
+        Bucket,
     }
 
     public List<ObjectType> types = new List<ObjectType>();
