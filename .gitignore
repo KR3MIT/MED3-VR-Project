@@ -75,3 +75,60 @@ crashlytics-build.properties
 [Aa]ssets/[Ss]treamingAssets/aa/*
 
 # End of https://www.toptal.com/developers/gitignore/api/unity
+*.png
+Assets/VRTemplateAssets/Sprites/Icons/Scroll Down.png
+Assets/VRTemplateAssets/Sprites/Icons/Scroll Left.png
+Assets/VRTemplateAssets/Sprites/Icons/Scroll Right.png
+Assets/VRTemplateAssets/Sprites/Icons/Scroll Up.png
+Assets/VRTemplateAssets/Sprites/Icons/Teleport.png
+Assets/VRTemplateAssets/Sprites/UI/Circle_60x60 Outline 4.png
+Assets/VRTemplateAssets/Sprites/UI/Circle_60x60 Outline.png
+Assets/VRTemplateAssets/Sprites/UI/Circle_60x60_Horizontal.png
+Assets/VRTemplateAssets/Sprites/UI/Circle_60x60_Vertical.png
+Assets/VRTemplateAssets/Sprites/UI/CircleMask.png
+Assets/VRTemplateAssets/Sprites/UI/Joystick BG.png
+Assets/VRTemplateAssets/Sprites/UI/Joystick Segment.png
+Assets/VRTemplateAssets/Sprites/UI/Round Radius 10 Bottom.png
+Assets/VRTemplateAssets/Sprites/UI/Round Radius 10 Outline.png
+Assets/VRTemplateAssets/Sprites/UI/Round Radius 10 Top.png
+Assets/VRTemplateAssets/Sprites/UI/Round Radius 10.png
+Assets/VRTemplateAssets/Tutorial/Images/1-welcome-screen-image.png
+Assets/VRTemplateAssets/Tutorial/Images/project-header-vr.png
+Assets/VRTemplateAssets/Sprites/Icons/Scroll Down.png
+Assets/VRTemplateAssets/Sprites/Icons/Scroll Left.png
+Assets/VRTemplateAssets/Sprites/Icons/Scroll Right.png
+Assets/VRTemplateAssets/Sprites/Icons/Scroll Up.png
+Assets/VRTemplateAssets/Sprites/Icons/Teleport.png
+Assets/VRTemplateAssets/Sprites/UI/Circle_60x60 Outline 4.png
+Assets/VRTemplateAssets/Sprites/UI/Circle_60x60 Outline.png
+Assets/VRTemplateAssets/Sprites/UI/Circle_60x60_Horizontal.png
+Assets/VRTemplateAssets/Sprites/UI/Circle_60x60_Vertical.png
+Assets/VRTemplateAssets/Sprites/UI/CircleMask.png
+Assets/VRTemplateAssets/Sprites/UI/Joystick BG.png
+Assets/VRTemplateAssets/Sprites/UI/Joystick Segment.png
+Assets/VRTemplateAssets/Sprites/UI/Round Radius 10 Bottom.png
+Assets/VRTemplateAssets/Sprites/UI/Round Radius 10 Outline.png
+Assets/VRTemplateAssets/Sprites/UI/Round Radius 10 Top.png
+Assets/VRTemplateAssets/Sprites/UI/Round Radius 10.png
+Assets/VRTemplateAssets/Tutorial/Images/1-welcome-screen-image.png
+Assets/VRTemplateAssets/Tutorial/Images/project-header-vr.png
+Assets/VRTemplateAssets/Sprites/Icons/Scroll Down.png
+*.png
+Assets/VRTemplateAssets/Sprites/Icons/Scroll Down.png
+Assets/VRTemplateAssets/Sprites/Icons/Scroll Left.png
+Assets/VRTemplateAssets/Sprites/Icons/Scroll Right.png
+Assets/VRTemplateAssets/Sprites/Icons/Scroll Up.png
+Assets/VRTemplateAssets/Sprites/Icons/Teleport.png
+Assets/VRTemplateAssets/Sprites/UI/Circle_60x60 Outline 4.png
+Assets/VRTemplateAssets/Sprites/UI/Circle_60x60 Outline.png
+Assets/VRTemplateAssets/Sprites/UI/Circle_60x60_Horizontal.png
+Assets/VRTemplateAssets/Sprites/UI/Circle_60x60_Vertical.png
+Assets/VRTemplateAssets/Sprites/UI/CircleMask.png
+Assets/VRTemplateAssets/Sprites/UI/Joystick BG.png
+Assets/VRTemplateAssets/Sprites/UI/Joystick Segment.png
+Assets/VRTemplateAssets/Sprites/UI/Round Radius 10 Bottom.png
+Assets/VRTemplateAssets/Sprites/UI/Round Radius 10 Outline.png
+Assets/VRTemplateAssets/Sprites/UI/Round Radius 10 Top.png
+Assets/VRTemplateAssets/Sprites/UI/Round Radius 10.png
+Assets/VRTemplateAssets/Tutorial/Images/1-welcome-screen-image.png
+Assets/VRTemplateAssets/Tutorial/Images/project-header-vr.png
