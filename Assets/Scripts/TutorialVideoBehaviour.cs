@@ -10,7 +10,7 @@ public class TutorialVideoBehaviour : MonoBehaviour
     public RawImage rawImage;
     public VideoPlayer videoPlayer;
 
-    int videoIndex = 1;
+    int videoIndex = 0;
 
     private void Start()
     {
@@ -35,14 +35,4 @@ public class TutorialVideoBehaviour : MonoBehaviour
         rawImage.gameObject.SetActive(false);
     }
 
-    private int CalculateVideoIndex(Vector2 clickPosition)
-    {
-        // Implement your logic to determine the video index based on the click position
-        // For example, you could divide the Raw Image into regions and assign a video to each region
-        int videoIndex = 0; // Default to the first video
-
-        // Add your region calculation logic here
-
-        return videoIndex;
-    }
 }
