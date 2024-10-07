@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_tilepanel light 2
+  m_Name: M_tilepanel dark 1
   m_Shader: {fileID: -6465566751694194690, guid: e0d162102ad58e9479710a972563928c, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -68,18 +68,18 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Red_channel_as_emi: 0
-    - _Red_chn_as_emi_and_bc: 1
-    - _SMO: 0.2
-    - _TIle: 1
-    - _Triplanar: 0
+    - _Red_chn_as_emi_and_bc: 0
+    - _SMO: 0.1
+    - _TIle: 0.6666
+    - _Triplanar: 1
     m_Colors:
-    - _Buttom: {r: 0.1254902, g: 0.1254902, b: 0.1254902, a: 0}
-    - _EMI_color: {r: 0, g: 1, b: 0, a: 0}
+    - _Buttom: {r: 0, g: 0, b: 0, a: 0}
+    - _EMI_color: {r: 1, g: 0, b: 0, a: 0}
     - _Middle: {r: 1, g: 1, b: 1, a: 0}
-    - _Top: {r: 0, g: 1, b: 0, a: 0}
+    - _Top: {r: 0.1254902, g: 0.1254902, b: 0.1254902, a: 0}
     - _buttom: {r: 0.16862746, g: 0.16862746, b: 0.16862746, a: 0}
-    - _middle: {r: 0.16862746, g: 0.16862746, b: 0.16862746, a: 0}
-    - _top: {r: 1, g: 1, b: 1, a: 0}
+    - _middle: {r: 1, g: 1, b: 1, a: 0}
+    - _top: {r: 0.16862746, g: 0.16862746, b: 0.16862746, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &5780616332113102317
 MonoBehaviour:

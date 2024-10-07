@@ -44,6 +44,7 @@ Material:
     - _SMO: 0.1
     m_Colors:
     - _Buttom: {r: 1, g: 1, b: 1, a: 0}
+    - _Top: {r: 0.1254902, g: 0.1254902, b: 0.1254902, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &4073306854246552774
 MonoBehaviour:
