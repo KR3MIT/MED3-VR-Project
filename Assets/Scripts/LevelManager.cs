@@ -31,7 +31,7 @@ public class LevelManager : MonoBehaviour
     IEnumerator test ()
     {
         yield return new WaitForSeconds(3f);
-        EndLevel(3f, "EmptyScene");
+        EndLevel(3f, "lvl 1");
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
