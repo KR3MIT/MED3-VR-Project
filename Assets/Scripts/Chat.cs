@@ -8,6 +8,7 @@ public class Chat : MonoBehaviour
     public static Chat Instance { get; private set; }
 
     public GameObject chatMessage;
+    public Transform panelTransform;
 
     private void Awake()
     {
@@ -24,7 +25,18 @@ public class Chat : MonoBehaviour
 
     public void AddMessage(string name, string message, bool isRight)
     {
-        GameObject newMessage = Instantiate(chatMessage, transform);
+        if (panelTransform == null)
+        {
+            Debug.LogError("Panel transform is not set.");
+            return;
+        }
+
+        if (isRight == true) {
+            AddMessage("","", false);
+            AddMessage("", "", false);
+        }
+
+        GameObject newMessage = Instantiate(chatMessage, panelTransform); // Instantiate on the panel
 
         var nameText = newMessage.transform.GetChild(0).GetComponent<TMP_Text>();
         var messageText = newMessage.transform.GetChild(1).GetComponent<TMP_Text>();
@@ -34,9 +46,15 @@ public class Chat : MonoBehaviour
 
     public void ResetChat()
     {
-        foreach (Transform child in transform)
+        if (panelTransform == null)
         {
-            Destroy(child.gameObject);
+            Debug.LogError("Panel transform is not set.");
+            return;
+        }
+
+        foreach (Transform child in panelTransform)
+        {
+            //Destroy(child.gameObject);
         }
     }
 }
