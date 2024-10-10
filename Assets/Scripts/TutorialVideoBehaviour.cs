@@ -10,7 +10,7 @@ public class TutorialVideoBehaviour : MonoBehaviour
     public RawImage rawImage;
     public VideoPlayer videoPlayer;
 
-    int videoIndex = 0;
+    int videoIndex;
 
     private void Start()
     {
@@ -18,14 +18,12 @@ public class TutorialVideoBehaviour : MonoBehaviour
         rawImage.texture = videoPlayer.targetTexture;
     }
 
-    public void OnVideoButtonClick()
+    public void OnVideoButtonClick(int index)
     {
             rawImage.gameObject.SetActive(true);
             // Play the selected video
-            videoPlayer.clip = videoClips[videoIndex];
+            videoPlayer.clip = videoClips[index];
             videoPlayer.Play();
-
-            videoIndex++;
     }
 
     public void OnExitButtonClick()
