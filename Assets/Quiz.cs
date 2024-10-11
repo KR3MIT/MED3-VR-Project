@@ -8,7 +8,7 @@ public class Quiz : MonoBehaviour
 {
     [SerializeField] private TMP_Text text;
     public List<string> håndtegn;
-    private string currentTegn;
+    public string currentTegn;
 
     private string sentence;
 
@@ -37,6 +37,12 @@ public class Quiz : MonoBehaviour
 
     private void RandomTegn(bool firstTime = false)
     {
+        if(håndtegn.Count == 0)
+        {
+            text.text = "Tillykke! Du har nu gennemført quizzen!";
+            return;
+        }
+
         if (!firstTime) 
         {
         håndtegn.Remove(currentTegn);
