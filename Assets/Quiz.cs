@@ -6,22 +6,24 @@ using UnityEngine;
 public class Quiz : MonoBehaviour
 {
     [SerializeField] private TMP_Text text;
+   
+ 
 
     // Start is called before the first frame update
     void Start()
     {
-        text.text = "tillykke med at nå så langt!, kan du lav håndtegnet for grøn?";
+        text.text = "Tillykke med at nå så langt! Nu skal vi se om du kan huske de tegn du har lært! Kan du vise mig håndtegnet for grøn?";    
+
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Grøn()
     {
-        
+        text.text = "korrekt! kan du lav håndtegnet for Hej?";
     }
 
     public void Hej()
     {
-        text.text = "korrekt! kan du lav håndtegnet for hej?";
+        text.text = "korrekt! kan du lav håndtegnet for Lille Kugle?";
     }
 
     public void LilleKugle()
