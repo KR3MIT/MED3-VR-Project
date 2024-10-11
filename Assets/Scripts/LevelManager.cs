@@ -8,6 +8,8 @@ public class LevelManager : MonoBehaviour
 {
     public static LevelManager instance;
 
+    public float fadeInTime = 1f;
+
     private void Awake()
     {
         if (instance == null)
@@ -36,7 +38,7 @@ public class LevelManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        SceneTransition.instance.FadeIn(1f);
+        SceneTransition.instance.FadeIn(fadeInTime);
     }
 
     /// <summary>
