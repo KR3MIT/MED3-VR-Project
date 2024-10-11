@@ -9,6 +9,8 @@ public class Chat : MonoBehaviour
 
     public GameObject chatMessage;
     public Transform panelTransform;
+    public Vector3 messageScale = new Vector3(1.2f, 1.2f, 1.2f); // Scale factor for the messages
+
 
     private void Awake()
     {
@@ -42,6 +44,10 @@ public class Chat : MonoBehaviour
         var messageText = newMessage.transform.GetChild(1).GetComponent<TMP_Text>();
         nameText.text = name;
         messageText.text = message;
+
+        // Scale up the message
+        newMessage.GetComponent<RectTransform>().localScale = messageScale;
+
     }
 
     public void ResetChat()
