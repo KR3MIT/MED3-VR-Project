@@ -2,31 +2,58 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class Quiz : MonoBehaviour
 {
     [SerializeField] private TMP_Text text;
+    public List<string> håndtegn;
+    public string currentTegn;
+
+    private string sentence;
 
     // Start is called before the first frame update
     void Start()
     {
-        text.text = "tillykke med at nå så langt!, kan du lav håndtegnet for grøn?";
-    }
+        RandomTegn(true);
 
-    // Update is called once per frame
-    void Update()
+        text.text = "Tillykke med at nå så langt! Nu skal vi se om du kan huske de tegn du har lært! Kan du vise mig håndtegnet for " + sentence;
+
+    }
+    public void CheckTegn(string tegnNavn)
     {
-        
+        //make string to enum
+
+
+        if (tegnNavn != currentTegn)
+        {
+            return;
+        }
+
+        sentence = "Korrekt! Kan du lave håndtegnet for ";
+
+        RandomTegn();
     }
 
-    public void Hej()
+    private void RandomTegn(bool firstTime = false)
     {
-        text.text = "korrekt! kan du lav håndtegnet for hej?";
-    }
+        if (håndtegn.Count == 0)
+        {
+            text.text = "Tillykke! Du har nu gennemført quizzen!";
+            return;
+        }
 
-    public void LilleKugle()
-    {
-        text.text = "yep";
-    }
+        if (!firstTime)
+        {
+            håndtegn.Remove(currentTegn);
+        }
 
+        int randomIndex = Random.Range(0, håndtegn.Count);
+        currentTegn = håndtegn[randomIndex];
+
+        sentence += currentTegn + "?";
+
+        if (!firstTime)
+            text.text = sentence;
+    }
 }
