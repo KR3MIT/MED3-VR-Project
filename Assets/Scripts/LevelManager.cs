@@ -6,28 +6,28 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
-    public static LevelManager instance;
+    //public static LevelManager instance;
 
     public float fadeInTime = 1f;
 
     private void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(this);
-        }
-        else
-        {
-            Destroy(this);
-        }
+        //if (instance == null)
+        //{
+        //    instance = this;
+        //    DontDestroyOnLoad(this);
+        //}
+        //else
+        //{
+        //    Destroy(this);
+        //}
 
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     private void Start()
     {
-        StartCoroutine(test());
+        //StartCoroutine(test());
     }
 
     IEnumerator test ()
@@ -49,6 +49,11 @@ public class LevelManager : MonoBehaviour
     public void EndLevel(float fadeDuration, string levelName)
     {
         SceneTransition.instance.FadeOut(fadeDuration, () => LoadLevel(levelName));
+    }
+
+    public void EndLevel2SecDelay(string levelName)
+    {
+        EndLevel(2f, levelName);
     }
 
     public void LoadLevel(string levelName)

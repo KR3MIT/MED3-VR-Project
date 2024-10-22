@@ -94,7 +94,7 @@ public class AICompanion : MonoBehaviour
         actionRunning = true;
         Move(target);
         while (Vector3.Distance(transform.position, target.position) > 1.5f)
-        {
+        {   
             yield return null;
         }
         Place();
