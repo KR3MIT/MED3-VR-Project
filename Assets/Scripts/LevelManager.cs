@@ -46,14 +46,14 @@ public class LevelManager : MonoBehaviour
     /// </summary>
     /// <param name="fadeDuration"></param>
     /// <param name="levelName"></param>
-    public void EndLevel(float fadeDuration, string levelName)
+    private void EndLevel(float fadeDuration, string levelName)
     {
         SceneTransition.instance.FadeOut(fadeDuration, () => LoadLevel(levelName));
     }
 
-    public void EndLevel2SecDelay(string levelName)
+    public void EndLVL(string levelName)
     {
-        EndLevel(2f, levelName);
+        EndLevel(3f, "lvl 1");
     }
 
     public void LoadLevel(string levelName)
