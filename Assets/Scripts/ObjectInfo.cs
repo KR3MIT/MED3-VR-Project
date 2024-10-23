@@ -33,4 +33,9 @@ public class ObjectInfo : MonoBehaviour
 
         objectList[level].Add(this);
     }
+
+    public bool HasType(ObjectType type)
+    {
+        return types.Contains(type);
+    }
 }

@@ -29,7 +29,7 @@ public class AICompanion : MonoBehaviour
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        StartCoroutine(test());
+        //StartCoroutine(test());
     }
 
     IEnumerator test()
