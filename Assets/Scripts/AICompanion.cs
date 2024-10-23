@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.AI;
 using ObjectType = ObjectInfo.ObjectType;
@@ -8,10 +9,12 @@ public class AICompanion : MonoBehaviour
 {
     int currentLevel = 0;
     private NavMeshAgent agent;
-    private ObjectInfo carryingObject;
-    private List<ObjectType> currentTypes = new List<ObjectType>();
-    private bool canDefine = false;
-    private bool actionRunning = false;
+
+    [Header("Debug stuff dont touch only look!!!")]
+    public ObjectInfo carryingObject;
+    public List<ObjectType> currentTypes = new List<ObjectType>();
+    public bool canDefine = false;
+    public bool actionRunning = false;
 
     public enum State
     {
@@ -26,7 +29,22 @@ public class AICompanion : MonoBehaviour
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        StartCoroutine(test());
     }
+
+    IEnumerator test()
+    {
+        MoveAndPickupStart();
+        yield return new WaitForSeconds(1f);
+        DefineObjectType("Sphere");
+        yield return new WaitForSeconds(6f);
+
+        MoveAndPlaceStart();
+        yield return new WaitForSeconds(1f);
+        DefineObjectType("Bucket");
+        yield return null;
+    }
+
 
     public void StartActionDefinition(State stateToStart)
     {
@@ -97,7 +115,7 @@ public class AICompanion : MonoBehaviour
         {   
             yield return null;
         }
-        Place();
+        Place(target);
         actionRunning = false;
         state = State.Idle;
     }
@@ -160,6 +178,14 @@ public class AICompanion : MonoBehaviour
         carryingObject.GetComponent<Rigidbody>().isKinematic = false;
         carryingObject.transform.SetParent(null);
         carryingObject = null;
+    }
+
+    private void Place(Transform targetTransform)
+    {
+        carryingObject.GetComponent<Rigidbody>().isKinematic = false;
+        carryingObject.transform.SetParent(null);
+        carryingObject = null;
+        carryingObject.transform.position = new Vector3(targetTransform.position.x, carryingObject.transform.position.y, targetTransform.position.z);
     }
 
     public void Hello()
