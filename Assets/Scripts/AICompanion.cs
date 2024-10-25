@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.InputSystem;
 using ObjectType = ObjectInfo.ObjectType;
 
 public class AICompanion : MonoBehaviour
@@ -15,12 +17,14 @@ public class AICompanion : MonoBehaviour
     public List<ObjectType> currentTypes = new List<ObjectType>();
     public bool canDefine = false;
     public bool actionRunning = false;
+    public bool noPath = false;
 
     public enum State
     {
         Idle,
         MovePickup,
         MovePlace,
+        Move,
     }
 
     private State state = State.Idle;
@@ -32,8 +36,32 @@ public class AICompanion : MonoBehaviour
         //StartCoroutine(test());
     }
 
+    private void Update()
+    {
+        //if (Mouse.current.rightButton.wasPressedThisFrame)
+        //{
+        //    Debug.Log("Left mouse button pressed");
+        //    StartCoroutine(test());
+        //}
+
+        if (agent.pathStatus == NavMeshPathStatus.PathPartial || agent.pathStatus == NavMeshPathStatus.PathInvalid)
+        {
+            noPath = true;
+            Debug.Log("No path found, please define new action");
+            agent.SetDestination(transform.position);
+            actionRunning = false;
+            canDefine = true;
+            StopAllCoroutines();
+        }
+        else
+        {
+            noPath = false;
+        }
+    }
+
     IEnumerator test()
     {
+        yield return new WaitForSeconds(2f);
         MoveAndPickupStart();
         yield return new WaitForSeconds(1f);
         DefineObjectType("Sphere");
@@ -42,6 +70,12 @@ public class AICompanion : MonoBehaviour
         MoveAndPlaceStart();
         yield return new WaitForSeconds(1f);
         DefineObjectType("Bucket");
+        yield return new WaitForSeconds(4f);
+        MoveToStart();
+        yield return new WaitForSeconds(1f);
+        DefineObjectType("Blue");
+
+
         yield return null;
     }
 
@@ -87,6 +121,9 @@ public class AICompanion : MonoBehaviour
                 case State.MovePlace:
                     MovePlace();
                     break;
+                case State.Move:
+                    MoveTo();
+                    break;
             }
         }
     }
@@ -126,6 +163,7 @@ public class AICompanion : MonoBehaviour
     public void MoveAndPickupStart()
     {
         StartActionDefinition(State.MovePickup);
+        Debug.Log("Move and pickup started");
     }
 
     private void MovePickup()
@@ -159,6 +197,36 @@ public class AICompanion : MonoBehaviour
 
     #endregion
 
+    #region move
+
+    public void MoveToStart()
+    {
+        StartActionDefinition(State.Move);
+    }
+
+    private void MoveTo()
+    {
+        Debug.Log("Only one object found proceeding to move");
+        ObjectInfo objectInfo = FindObjectsWithTypes(currentTypes)[0];
+
+        StartCoroutine(MoveToRoutine(objectInfo.transform));
+    }
+
+    private IEnumerator MoveToRoutine(Transform target)
+    {
+        actionRunning = true;
+        Move(target);
+        while (Vector3.Distance(transform.position, target.position) > 1.5f)
+        {
+            yield return null;
+        }
+        actionRunning = false;
+        state = State.Idle;
+    }
+
+    #endregion
+
+
     #region actions
     private void Move(Transform target)
     {
@@ -184,8 +252,8 @@ public class AICompanion : MonoBehaviour
     {
         carryingObject.GetComponent<Rigidbody>().isKinematic = false;
         carryingObject.transform.SetParent(null);
-        carryingObject = null;
         carryingObject.transform.position = new Vector3(targetTransform.position.x, carryingObject.transform.position.y, targetTransform.position.z);
+        carryingObject = null;
     }
 
     public void Hello()
