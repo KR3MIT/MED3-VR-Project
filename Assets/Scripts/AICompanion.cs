@@ -62,16 +62,23 @@ public class AICompanion : MonoBehaviour
         yield return new WaitForSeconds(2f);
         MoveAndPickupStart();
         yield return new WaitForSeconds(1f);
-        DefineObjectType("Sphere");
+        DefineObjectType("Green");
         yield return new WaitForSeconds(6f);
 
         MoveAndPlaceStart();
         yield return new WaitForSeconds(1f);
         DefineObjectType("Bucket");
-        yield return new WaitForSeconds(4f);
-        MoveToStart();
+        yield return new WaitForSeconds(6f);
+
+        MoveAndPickupStart();
         yield return new WaitForSeconds(1f);
         DefineObjectType("Blue");
+        yield return new WaitForSeconds(5f);
+
+        MoveAndPlaceStart();
+        yield return new WaitForSeconds(1f);
+        DefineObjectType("Bucket");
+        yield return new WaitForSeconds(6f);
 
 
         yield return null;
