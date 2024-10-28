@@ -59,3 +59,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   continuepannel: {fileID: 0}
+  confetti: {fileID: 0}
+  UIStartActive: 0
+  TutMode: 0
+  TutModeStartActive: 1
+  HandGesureManager: {fileID: 0}
