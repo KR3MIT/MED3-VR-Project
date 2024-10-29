@@ -16,6 +16,8 @@ public class TutorialVideoBehaviour : MonoBehaviour
     {
         // Assign the Render Texture to the Raw Image
         rawImage.texture = videoPlayer.targetTexture;
+
+        OnVideoButtonClick(0);
     }
 
     public void OnVideoButtonClick(int index)
