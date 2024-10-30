@@ -26,7 +26,8 @@ public class TaskCondition : MonoBehaviour
         else
             TutMode = false;
 
-        HandGesureManager.SetActive(TutMode);
+        if(HandGesureManager != null)
+        HandGesureManager?.SetActive(!TutMode);
     }
 
     // Update is called once per frame
@@ -45,6 +46,7 @@ public class TaskCondition : MonoBehaviour
     public void ToggleTutMode()
     {
         TutMode = !TutMode;
+        if(HandGesureManager != null)
         HandGesureManager.SetActive(!TutMode);
     }
 }
