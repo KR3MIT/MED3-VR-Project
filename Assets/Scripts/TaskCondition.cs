@@ -45,6 +45,6 @@ public class TaskCondition : MonoBehaviour
     public void ToggleTutMode()
     {
         TutMode = !TutMode;
-        HandGesureManager.SetActive(TutMode);
+        HandGesureManager.SetActive(!TutMode);
     }
 }
