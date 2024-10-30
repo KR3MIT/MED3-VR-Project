@@ -60,4 +60,9 @@ public class LevelManager : MonoBehaviour
     {
         SceneManager.LoadScene(levelName);
     }
+    public void LoadLevel()
+    {
+        //load next scene from build index
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
 }
