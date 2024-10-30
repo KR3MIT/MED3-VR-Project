@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Rendering;
 
 public class Quiz : MonoBehaviour
@@ -11,6 +12,8 @@ public class Quiz : MonoBehaviour
     public string currentTegn;
 
     private string sentence;
+
+    public UnityEvent QuizCompleted;
 
     // Start is called before the first frame update
     void Start()
@@ -40,6 +43,7 @@ public class Quiz : MonoBehaviour
         if (håndtegn.Count == 0)
         {
             text.text = "Tillykke! Du har nu gennemført quizzen!";
+            QuizCompleted.Invoke();
             return;
         }
 
