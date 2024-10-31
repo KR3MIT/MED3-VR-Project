@@ -18,10 +18,16 @@ public class TwoHandGesture : MonoBehaviour
     public UnityEvent BothHandsDetected;
     public UnityEvent BothHandsEnded;
 
+    private Coroutine hand1, hand2;
+
     public void SetHand1()
     {
         hand1Detected = true;
-        StartCoroutine(ResetHandAfterTime(() => hand1Detected = false));
+
+        if (hand1 != null)
+            StopCoroutine(hand1);
+
+        hand1 = StartCoroutine(ResetHandAfterTime(() => hand1Detected = false));
 
         CheckHands();
     }
@@ -29,7 +35,11 @@ public class TwoHandGesture : MonoBehaviour
     public void SetHand2()
     {
         hand2Detected = true;
-        StartCoroutine(ResetHandAfterTime(() => hand2Detected = false));
+
+        if (hand2 != null)
+            StopCoroutine(hand2);
+        
+        hand2 = StartCoroutine(ResetHandAfterTime(() => hand2Detected = false));
         CheckHands();
     }
 
