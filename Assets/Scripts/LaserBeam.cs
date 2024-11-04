@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class LaserBeam : MonoBehaviour
+public class LaserBeam //: MonoBehaviour
 // this script was inspired by Doc: https://www.youtube.com/watch?v=pNE3rfMGEAw
 {
     Vector3 pos, dir;
+
+    //everything except layer 6 which is object
+    LayerMask rayLayers = ~(1 << 6);
 
     GameObject laserPointer;
     LineRenderer laserLine;
@@ -36,7 +39,7 @@ public class LaserBeam : MonoBehaviour
     Ray ray = new Ray(pos, dir);
     RaycastHit hit;
 
-    if(Physics.Raycast(ray, out hit, 30, 1))
+    if(Physics.Raycast(ray, out hit, 30, rayLayers))
     {
        Checkhit(hit,dir,laserLine);
     }
