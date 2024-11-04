@@ -228,6 +228,11 @@ public class AICompanion : MonoBehaviour
         {
             yield return null;
         }
+        yield return new WaitForSeconds(.5f);
+        var dir = (Camera.main.transform.position - transform.position).normalized;
+        agent.SetDestination(transform.position + dir * 3);
+        yield return new WaitForSeconds(1f);
+
         actionRunning = false;
         state = State.Idle;
     }
