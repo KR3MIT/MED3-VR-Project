@@ -11,7 +11,7 @@ public class PressurePad : MonoBehaviour
     {
         if (other.CompareTag("Object"))//aiguy is object ig
         {
-            Debug.Log("Object on pressure pad");
+            objectToRotate.transform.Rotate(0, 45, 0);
             //do the thing!!
         }
     }
