@@ -1664,6 +1664,9 @@
     "m_SubDatas": [],
     "m_ActiveTargets": [
         {
+            "m_Id": "8b0b94ca8a814bde838bc169ac36c3de"
+        },
+        {
             "m_Id": "01ff5b22650848b7887a616eb4a32060"
         }
     ]
@@ -1735,9 +1738,9 @@
         "m_Id": "e8eb10cfe0d4436e8a1d4504c1b44a90"
     },
     "m_AllowMaterialOverride": false,
-    "m_SurfaceType": 0,
+    "m_SurfaceType": 1,
     "m_ZTestMode": 4,
-    "m_ZWriteControl": 0,
+    "m_ZWriteControl": 1,
     "m_AlphaMode": 0,
     "m_RenderFace": 2,
     "m_AlphaClip": false,
@@ -5881,6 +5884,23 @@
 }
 
 {
+    "m_SGVersion": 2,
+    "m_Type": "UnityEditor.Rendering.BuiltIn.ShaderGraph.BuiltInTarget",
+    "m_ObjectId": "8b0b94ca8a814bde838bc169ac36c3de",
+    "m_ActiveSubTarget": {
+        "m_Id": "c2158c4785754b208a51db7f100a3739"
+    },
+    "m_AllowMaterialOverride": false,
+    "m_SurfaceType": 1,
+    "m_ZWriteControl": 0,
+    "m_ZTestMode": 4,
+    "m_AlphaMode": 0,
+    "m_RenderFace": 2,
+    "m_AlphaClip": false,
+    "m_CustomEditorGUI": ""
+}
+
+{
     "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.Texture2DInputMaterialSlot",
     "m_ObjectId": "8b3ef737cc364d6a8948e527490d4a25",
@@ -7699,6 +7719,14 @@
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
     "m_Value": true
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.Rendering.BuiltIn.ShaderGraph.BuiltInLitSubTarget",
+    "m_ObjectId": "c2158c4785754b208a51db7f100a3739",
+    "m_WorkflowMode": 1,
+    "m_NormalDropOffSpace": 0
 }
 
 {
