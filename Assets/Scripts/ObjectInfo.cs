@@ -17,6 +17,11 @@ public class ObjectInfo : MonoBehaviour
         Sphere,
         Capsule,
         Bucket,
+        En,
+        To,
+        Tre,
+        Fire,
+        Fem,
     }
 
     public List<ObjectType> types = new List<ObjectType>();
