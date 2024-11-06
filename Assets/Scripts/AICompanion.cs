@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
@@ -16,7 +17,7 @@ public class AICompanion : MonoBehaviour
     public bool canDefine = false;
     public bool actionRunning = false;
     public bool noPath = false;
-
+    public TMP_Text agentText;
     public enum State
     {
         Idle,
@@ -45,6 +46,7 @@ public class AICompanion : MonoBehaviour
         if (agent.pathStatus == NavMeshPathStatus.PathPartial || agent.pathStatus == NavMeshPathStatus.PathInvalid)
         {
             noPath = true;
+            agentText.text = "No path found, please define new action";
             Debug.Log("No path found, please define new action");
             agent.SetDestination(transform.position);
             actionRunning = false;
@@ -98,6 +100,7 @@ public class AICompanion : MonoBehaviour
         currentTypes.Clear();
         state = stateToStart;
         canDefine = true;
+
         Debug.Log("Which object?");
     }
 
@@ -112,9 +115,11 @@ public class AICompanion : MonoBehaviour
         currentTypes.Add(objectType);
         canDefine = false;
         Debug.Log("Object defined: " + objectType);
+        
 
         if(CheckMultiple(currentTypes))
         {
+            agentText.text = "There are multiple objects of type " + currentTypes + ". Please specify by giving additional information";
             Debug.Log("There are multiple objects of type " + currentTypes + ". Please specify.");
             canDefine = true;
             return;
@@ -124,12 +129,15 @@ public class AICompanion : MonoBehaviour
             switch (state)
             {
                 case State.MovePickup:
+                    agentText.text = "Object defined: " + objectType + ". Proceeding to pick up";
                     MovePickup();
                     break;
                 case State.MovePlace:
+                    agentText.text = "Object defined: " + objectType + ". Proceeding to move to place carried object";
                     MovePlace();
                     break;
                 case State.Move:
+                    agentText.text = "Object defined: " + objectType + ". Proceeding to move to";
                     MoveTo();
                     break;
             }
@@ -142,6 +150,12 @@ public class AICompanion : MonoBehaviour
     public void MoveAndPlaceStart()
     {
         StartActionDefinition(State.MovePlace);
+        if (actionRunning)
+        {
+            agentText.text = "Other action not finished yet, please wait";
+            return;
+        }
+        agentText.text = "Please specify where to place.";
     }
 
     private void MovePlace()
@@ -154,6 +168,13 @@ public class AICompanion : MonoBehaviour
 
     private IEnumerator MoveAndPlace(Transform target)
     {
+        if(carryingObject == null)
+        {
+            Debug.Log("No object to place");
+            actionRunning = false;
+            state = State.Idle;
+            yield break;
+        }
         actionRunning = true;
         Move(target);
         while (Vector3.Distance(transform.position, target.position) > 1.5f)
@@ -172,6 +193,12 @@ public class AICompanion : MonoBehaviour
     {
         StartActionDefinition(State.MovePickup);
         Debug.Log("Move and pickup started");
+        if (actionRunning)
+        {
+            agentText.text = "Other action not finished yet, please wait";
+            return;
+        }
+        agentText.text = "Please specify what to pick up.";
     }
 
     private void MovePickup()
@@ -210,6 +237,12 @@ public class AICompanion : MonoBehaviour
     public void MoveToStart()
     {
         StartActionDefinition(State.Move);
+        if (actionRunning)
+        {
+            agentText.text = "Other action not finished yet, please wait";
+            return;
+        }
+        agentText.text = "Please specify where to move.";
     }
 
     private void MoveTo()

@@ -12,7 +12,7 @@ public class ButtonDelay : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GetComponent<Button>();
+        button = GetComponent<Button>();
 
         if (startInactive)
         {
