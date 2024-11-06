@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7245697201374827511}
   - component: {fileID: 8362712197962601597}
   m_Layer: 0
-  m_Name: Decal Projector
+  m_Name: DP_EXIT MAN
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0777d029ed3dffa4692f417d4aba19ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 2100000, guid: 5f7e7ec0c1c2bb149b5264953bc2197e, type: 2}
+  m_Material: {fileID: 2100000, guid: 6c4ab9bc513dc8b469a9fc4e63efbbce, type: 2}
   m_DrawDistance: 1000
   m_FadeScale: 0.9
   m_StartAngleFade: 180
