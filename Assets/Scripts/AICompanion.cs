@@ -110,6 +110,12 @@ public class AICompanion : MonoBehaviour
         {
             return;
         }
+
+        if (state == State.MovePickup && objectTypeString == "Bucket")//HAHHAHAHAHAHAHAHAHHAAHHAHAHAHAHAHAHAHAHHAHAHAHAHAHAHHAHAHAHAHAHAHAHHAHHAHAHAHAHA
+        {
+            return;
+        }
+
         ObjectType objectType = (ObjectType)System.Enum.Parse(typeof(ObjectType), objectTypeString);//take the string and convert it to the enum, since unityevents wont take an enum smh
 
         currentTypes.Add(objectType);
@@ -203,7 +209,7 @@ public class AICompanion : MonoBehaviour
 
     private void MovePickup()
     {
-        Debug.Log("Only one object found proceeding to move and take");
+        Debug.Log("Only one object found proceeding to move and take "+ currentTypes[0]);
         ObjectInfo objectInfo = FindObjectsWithTypes(currentTypes)[0];
 
         if(objectInfo.isPickUpable)
@@ -306,6 +312,7 @@ public class AICompanion : MonoBehaviour
     {
         //play wave anim
         Debug.Log("Hello!");
+        agentText.text = "Hello!";
     }
 
     #endregion
@@ -335,18 +342,18 @@ public class AICompanion : MonoBehaviour
         return objectInfos;
     }
 
-    private List<ObjectInfo> FindObjectsWithTypes(ObjectType type)
-    {
-        List<ObjectInfo> objects = new List<ObjectInfo>();
-        foreach (ObjectInfo obj in ObjectInfo.objectList[currentLevel])
-        {
-            if (obj.types.Contains(type))
-            {
-                objects.Add(obj);
-            }
-        }
-        return objects;
-    }
+    // private List<ObjectInfo> FindObjectsWithTypes(ObjectType type)
+    // {
+    //     List<ObjectInfo> objects = new List<ObjectInfo>();
+    //     foreach (ObjectInfo obj in ObjectInfo.objectList[currentLevel])
+    //     {
+    //         if (obj.types.Contains(type))
+    //         {
+    //             objects.Add(obj);
+    //         }
+    //     }
+    //     return objects;
+    // }
 
     private bool CheckMultiple(List<ObjectType> types)
     {
