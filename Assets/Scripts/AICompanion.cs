@@ -154,6 +154,14 @@ public class AICompanion : MonoBehaviour
 
     private IEnumerator MoveAndPlace(Transform target)
     {
+        if(carryingObject == null)
+        {
+            Debug.Log("No object to place");
+            actionRunning = false;
+            state = State.Idle;
+            yield break;
+        }
+
         actionRunning = true;
         Move(target);
         while (Vector3.Distance(transform.position, target.position) > 1.5f)

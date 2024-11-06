@@ -12,7 +12,8 @@ public class ObjectInfo : MonoBehaviour
     public enum ObjectType
     {
         Green,
-        Blue,
+        Brown,
+        Yellow,
         Cube,
         Sphere,
         Capsule,
