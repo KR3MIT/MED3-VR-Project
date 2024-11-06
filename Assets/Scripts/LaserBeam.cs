@@ -8,6 +8,8 @@ public class LaserBeam //: MonoBehaviour
 {
     Vector3 pos, dir;
 
+
+
     //everything except layer 6 which is object
     LayerMask rayLayers = ~(1 << 6);
 
@@ -76,6 +78,15 @@ public class LaserBeam //: MonoBehaviour
             UpdateLaser();
         }
 
+        if (hitInfo.collider.gameObject.tag == "YellowButton")
+        {
+            GameObject yellowCube = GameObject.Find("YellowBarrier");
+            YellowBarrier yellowBarrier = yellowCube.GetComponent<YellowBarrier>();
+            yellowBarrier.BarrierActive();
+
+
+
+        }
 
     }
 }
