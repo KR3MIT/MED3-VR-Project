@@ -39,7 +39,7 @@ public class LaserBeam //: MonoBehaviour
         Ray ray = new Ray(pos, dir);
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit, 30, rayLayers))
+        if (Physics.Raycast(ray, out hit, 70, rayLayers))
         {
             Checkhit(hit, dir, laserLine);
         }
