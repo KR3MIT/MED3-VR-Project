@@ -27,7 +27,7 @@ public class AICompanion : MonoBehaviour
         Move,
     }
 
-    private State state = State.Idle;
+    public State state = State.Idle;
 
 
     private void Start()
@@ -184,7 +184,7 @@ public class AICompanion : MonoBehaviour
         }
         actionRunning = true;
         Move(target);
-        while (Vector3.Distance(transform.position, target.position) > 1.5f)
+        while (Vector3.Distance(transform.position, target.position) > 2f )
         {   
             yield return null;
         }
