@@ -75,7 +75,6 @@ crashlytics-build.properties
 [Aa]ssets/[Ss]treamingAssets/aa/*
 
 # End of https://www.toptal.com/developers/gitignore/api/unity
-*.png
 Assets/VRTemplateAssets/Sprites/Icons/Scroll Down.png
 Assets/VRTemplateAssets/Sprites/Icons/Scroll Left.png
 Assets/VRTemplateAssets/Sprites/Icons/Scroll Right.png
