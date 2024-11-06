@@ -18,6 +18,7 @@ public class AICompanion : MonoBehaviour
     public bool actionRunning = false;
     public bool noPath = false;
     public TMP_Text agentText;
+    public Transform resetPoint;
     public enum State
     {
         Idle,
@@ -268,9 +269,9 @@ public class AICompanion : MonoBehaviour
             yield return null;
         }
         yield return new WaitForSeconds(.5f);
-        var dir = (Camera.main.transform.position - transform.position).normalized;
-        agent.SetDestination(transform.position + dir * 3);
-        yield return new WaitForSeconds(1f);
+        if(resetPoint != null)
+        agent.SetDestination(resetPoint.position);
+        yield return new WaitForSeconds(.5f);
 
         actionRunning = false;
         state = State.Idle;
