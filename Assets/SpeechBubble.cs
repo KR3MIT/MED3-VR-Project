@@ -5,7 +5,6 @@ using UnityEngine;
 public class SpeechBubble : MonoBehaviour
 {
     [SerializeField] private GameObject text;
-    [SerializeField] private AICompanion ai;
     [SerializeField] private Transform player;
 
     // Start is called before the first frame update
