@@ -9,10 +9,13 @@ public class PressurePad : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Object"))//aiguy is object ig
+        Debug.Log("hahaha");
+        if (other.CompareTag("AI"))//aiguy is object ig
         {
-            objectToRotate.transform.Rotate(0, 45, 0);
+
+            objectToRotate.transform.Rotate(0, 15, 0);
             //do the thing!!
+            Debug.Log("Pressure pad activated");
         }
     }
 }

@@ -6,15 +6,13 @@ public class YellowBarrier : MonoBehaviour
 
 {
     private Transform yellowBarrierTransform;
-    Vector3 pos = new Vector3(0, 0, 0);
-    private int count = 0;
+ 
 
     public void BarrierActive()
     {
-
-        yellowBarrierTransform = gameObject.transform;
-        pos = yellowBarrierTransform.position;
-        pos = new Vector3(0, 10, 0);
+        
+            yellowBarrierTransform = gameObject.transform;
+            yellowBarrierTransform.position += new Vector3(0, 15, 0);
         
         
     }

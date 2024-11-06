@@ -1,17 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using Unity.VRTemplate;
 using UnityEngine;
 
 public class LaserBeam //: MonoBehaviour
 // this script was inspired by Doc: https://www.youtube.com/watch?v=pNE3rfMGEAw
 {
     Vector3 pos, dir;
-
+    
 
 
     //everything except layer 6 which is object
     LayerMask rayLayers = ~(1 << 6);
+    static bool first,first1 = false;
 
     GameObject laserPointer;
     LineRenderer laserLine;
@@ -78,15 +80,22 @@ public class LaserBeam //: MonoBehaviour
             UpdateLaser();
         }
 
-        if (hitInfo.collider.gameObject.tag == "YellowButton")
+        if (hitInfo.collider.gameObject.tag == "YellowButton" && !first1)
         {
             GameObject yellowCube = GameObject.Find("YellowBarrier");
             YellowBarrier yellowBarrier = yellowCube.GetComponent<YellowBarrier>();
             yellowBarrier.BarrierActive();
+            first1 = true;
 
 
 
         }
+        if (hitInfo.collider.gameObject.tag == "GreenButton" && !first)
+        {
+            //insert win condition here
+            Debug.Log("You win!");
+            first = true;
 
+        }
     }
 }
