@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class PressurePad : MonoBehaviour
 {
-    public GameObject objectToRotate;
-
-
-    private void OnTriggerEnter(Collider other)
+ public List<GameObject> objectToRotate;
+    public void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Object"))//aiguy is object ig
+        Debug.Log("hahaha");
+        if (other.CompareTag("AI"))//aiguy is object ig
         {
-            objectToRotate.transform.Rotate(0, 45, 0);
+            foreach (GameObject obj in objectToRotate) 
+            {
+                obj.transform.Rotate(0, 15, 0); 
+            }
+            //objectToRotate.transform.Rotate(0, 15, 0);
             //do the thing!!
+            Debug.Log("Pressure pad activated");
         }
     }
 }

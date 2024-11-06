@@ -6,8 +6,8 @@ using UnityEngine.Events;
 
 public class Table : MonoBehaviour
 {
-    UnityEvent OneItemOnTable;
-    UnityEvent TwoItemsOnTable;
+    public UnityEvent OneItemOnTable;
+    public UnityEvent TwoItemsOnTable;
 
     public int maxItemsOnTable = 1;
 

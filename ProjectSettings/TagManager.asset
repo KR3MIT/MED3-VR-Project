@@ -7,6 +7,8 @@ TagManager:
   - Anchor
   - Mirror
   - YellowButton
+  - GreenButton
+  - AI
   layers:
   - Default
   - TransparentFX

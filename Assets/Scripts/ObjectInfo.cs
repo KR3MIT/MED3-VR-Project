@@ -18,6 +18,7 @@ public class ObjectInfo : MonoBehaviour
         Sphere,
         Capsule,
         Bucket,
+        Table,
         En,
         To,
         Tre,
