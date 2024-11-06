@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Anchor
   - Mirror
+  - YellowButton
   layers:
   - Default
   - TransparentFX
