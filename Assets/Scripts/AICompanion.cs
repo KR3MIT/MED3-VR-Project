@@ -370,6 +370,11 @@ public class AICompanion : MonoBehaviour
 
     #endregion
 
+    public void EndMove(Transform tra)
+    {
+        agent.SetDestination(tra.position);
+    }
+
     #region Helper methods
 
     private List<ObjectInfo> FindObjectsWithTypes(List<ObjectType> types)
