@@ -6,7 +6,7 @@ public class TaskCondition : MonoBehaviour
 {
     public GameObject continuepannel;
     public ParticleSystem confetti;
-
+    public Animator door;
     public bool UIStartActive = false;
     public bool TutMode = false;
     public bool TutModeStartActive = false;
@@ -39,7 +39,7 @@ public class TaskCondition : MonoBehaviour
     public void TaskCompleted()
     {
         confetti.Play();
-
+        door.SetTrigger("open");
         continuepannel.SetActive(true);
     }
 
