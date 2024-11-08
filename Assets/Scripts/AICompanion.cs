@@ -25,6 +25,7 @@ public class AICompanion : MonoBehaviour
         MovePickup,
         MovePlace,
         Move,
+        MoveNumber
     }
 
     public State state = State.Idle;
@@ -281,6 +282,49 @@ public class AICompanion : MonoBehaviour
 
     #endregion
 
+    #region moveNumber
+
+    public void MoveToNumberStart(string number)
+    {
+        if (actionRunning)
+        {
+            agentText.text = "Other action not finished yet, please wait";
+            return;
+        }
+        state = State.MoveNumber;
+        currentTypes.Clear();
+
+        currentTypes.Add((ObjectType)System.Enum.Parse(typeof(ObjectType), number)); //unityevents and enums :):):):):):):)
+        
+        MoveToNumber();
+        agentText.text = "Please specify where to move.";
+    }
+
+    private void MoveToNumber()
+    {
+        ObjectInfo objectInfo = FindObjectsWithTypes(currentTypes)[0];
+
+        StartCoroutine(MoveToNumberRoutine(objectInfo.transform));
+    }
+
+    private IEnumerator MoveToNumberRoutine(Transform target)
+    {
+        actionRunning = true;
+        Move(target);
+        while (Vector3.Distance(transform.position, target.position) > 1.5f)
+        {
+            yield return null;
+        }
+        yield return new WaitForSeconds(.5f);
+        if (resetPoint != null)
+            agent.SetDestination(resetPoint.position);
+        yield return new WaitForSeconds(.5f);
+
+        actionRunning = false;
+        state = State.Idle;
+    }
+
+    #endregion
 
     #region actions
     private void Move(Transform target)
