@@ -14,7 +14,7 @@ public class LaserBeam //: MonoBehaviour
     //everything except layer 6 which is object
     LayerMask rayLayers = ~(1 << 6);
     static bool first,first1 = false;
-
+    GameObject Door;
     GameObject laserPointer;
     LineRenderer laserLine;
     List<Vector3> laserIndices = new List<Vector3>();
@@ -94,6 +94,14 @@ public class LaserBeam //: MonoBehaviour
         {
             //insert win condition here
             Debug.Log("You win!");
+            // play particle effect
+
+            GameObject taskCondition = GameObject.Find("LevelManager");
+            TaskCondition task = taskCondition.GetComponent<TaskCondition>();
+            task.TaskCompleted();
+         
+            Door = GameObject.Find("Door with decals");
+            Door.GetComponent<Animator>().Play("Door Opening");
             first = true;
 
         }
