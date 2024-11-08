@@ -48,7 +48,7 @@ public class AICompanion : MonoBehaviour
         if (agent.pathStatus == NavMeshPathStatus.PathPartial || agent.pathStatus == NavMeshPathStatus.PathInvalid)
         {
             noPath = true;
-            agentText.text = "No path found, please define new action";
+            agentText.text = "Jeg fandt ingen vej, prøv noget andet";
             Debug.Log("No path found, please define new action");
             agent.SetDestination(transform.position);
             actionRunning = false;
@@ -127,7 +127,13 @@ public class AICompanion : MonoBehaviour
 
         if(CheckMultiple(currentTypes))
         {
-            agentText.text = "There are multiple objects of type " + currentTypes + ". Please specify by giving additional information";
+            string types = "";
+            foreach (ObjectType type in currentTypes)
+            {
+                types += type + ", ";
+            }
+
+            agentText.text = "Der er flere objekter med typerne: " + currentTypes + ". Specificer ved at give endnu en type.";
             Debug.Log("There are multiple objects of type " + currentTypes + ". Please specify.");
             canDefine = true;
             return;
@@ -137,15 +143,15 @@ public class AICompanion : MonoBehaviour
             switch (state)
             {
                 case State.MovePickup:
-                    agentText.text = "Object defined: " + objectType + ". Proceeding to pick up";
+                    agentText.text = "Objekt med typen " + objectType + " fundet. Går hen og samler objektet op.";
                     MovePickup();
                     break;
                 case State.MovePlace:
-                    agentText.text = "Object defined: " + objectType + ". Proceeding to move to place carried object";
+                    agentText.text = "Objekt med typen " + objectType + " fundet. Går hen og placere det holdte objekt.";
                     MovePlace();
                     break;
                 case State.Move:
-                    agentText.text = "Object defined: " + objectType + ". Proceeding to move to";
+                    agentText.text = "Objekt med typen " + objectType + " fundet. Går hen til objektet.";
                     MoveTo();
                     break;
             }
@@ -160,10 +166,10 @@ public class AICompanion : MonoBehaviour
         StartActionDefinition(State.MovePlace);
         if (actionRunning)
         {
-            agentText.text = "Other action not finished yet, please wait";
+            agentText.text = "Vent venligst til jeg er færdig med den nuværende aktion";
             return;
         }
-        agentText.text = "Please specify where to place.";
+        agentText.text = "Hvor skal jeg placere det holdte objekt?";
     }
 
     private void MovePlace()
@@ -205,10 +211,10 @@ public class AICompanion : MonoBehaviour
         Debug.Log("Move and pickup started");
         if (actionRunning)
         {
-            agentText.text = "Other action not finished yet, please wait";
+            agentText.text = "Vent venligst til jeg er færdig med den nuværende aktion";
             return;
         }
-        agentText.text = "Please specify what to pick up.";
+        agentText.text = "Hvad skal jeg samle op?";
     }
 
     private void MovePickup()
@@ -249,10 +255,10 @@ public class AICompanion : MonoBehaviour
         StartActionDefinition(State.Move);
         if (actionRunning)
         {
-            agentText.text = "Other action not finished yet, please wait";
+            agentText.text = "Vent venligst til jeg er færdig med den nuværende aktion";
             return;
         }
-        agentText.text = "Please specify where to move.";
+        agentText.text = "Hvor skal jeg bevæge mig hen?";
     }
 
     private void MoveTo()
@@ -288,7 +294,7 @@ public class AICompanion : MonoBehaviour
     {
         if (actionRunning)
         {
-            agentText.text = "Other action not finished yet, please wait";
+            agentText.text = "Vent venligst til jeg er færdig med den nuværende aktion";
             return;
         }
         state = State.MoveNumber;
@@ -297,7 +303,7 @@ public class AICompanion : MonoBehaviour
         currentTypes.Add((ObjectType)System.Enum.Parse(typeof(ObjectType), number)); //unityevents and enums :):):):):):):)
         
         MoveToNumber();
-        agentText.text = "Please specify where to move.";
+        agentText.text = "Bevæger mig mod tallet " + number;
     }
 
     private void MoveToNumber()
@@ -359,7 +365,7 @@ public class AICompanion : MonoBehaviour
     {
         //play wave anim
         Debug.Log("Hello!");
-        agentText.text = "Hello!";
+        agentText.text = "Hej!";
     }
 
     #endregion
