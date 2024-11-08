@@ -39,8 +39,9 @@ public class TaskCondition : MonoBehaviour
     public void TaskCompleted()
     {
         confetti.Play();
-        door.SetTrigger("open");
         continuepannel.SetActive(true);
+        if(door != null)
+        door.SetTrigger("open");
     }
 
     public void ToggleTutMode()

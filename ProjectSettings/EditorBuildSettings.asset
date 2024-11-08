@@ -9,14 +9,17 @@ EditorBuildSettings:
     path: Assets/Scenes/Intro lvl.unity
     guid: de4544a96c1ad9f4d9744f12530faa1a
   - enabled: 1
-    path: Assets/Scenes/learn number and quiz.unity
-    guid: 948892568d14c1b4f8d1277e83c08b45
+    path: Assets/Scenes/learn color and quiz 1.unity
+    guid: 31a680941efc481429d4716a3d20fced
   - enabled: 1
     path: Assets/Scenes/samarbejde.unity
     guid: 7faeebb3a19b4394e86a3ca552dc6186
   - enabled: 1
     path: Assets/Scenes/puzzle 1.unity
     guid: 21e3324ec399c6a4990e7eb2cda9e168
+  - enabled: 1
+    path: Assets/Scenes/learn number and quiz.unity
+    guid: 948892568d14c1b4f8d1277e83c08b45
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: bfa1182bd221b4ca89619141f66f1260, type: 2}
     Unity.XR.WindowsMR.Settings: {fileID: 11400000, guid: dc5a169419fa04987b057f65238cf3ba, type: 2}

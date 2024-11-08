@@ -71,7 +71,7 @@ Material:
     - _Red_chn_as_emi_and_bc: 1
     - _SMO: 0.5
     - _TIle: 0.333
-    - _Triplanar: 0
+    - _Triplanar: 1
     m_Colors:
     - _Buttom: {r: 0, g: 0, b: 0, a: 0}
     - _EMI_color: {r: 21.358198, g: 19.569029, b: 0, a: 0}
