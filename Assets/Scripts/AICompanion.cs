@@ -191,6 +191,7 @@ public class AICompanion : MonoBehaviour
         Place(target);
         actionRunning = false;
         state = State.Idle;
+        Debug.Log("Move and place finished");
     }
 
     #endregion
@@ -198,6 +199,7 @@ public class AICompanion : MonoBehaviour
     #region move and pickup
     public void MoveAndPickupStart()
     {
+        Debug.Log("HELLLOOOO????");
         StartActionDefinition(State.MovePickup);
         Debug.Log("Move and pickup started");
         if (actionRunning)
