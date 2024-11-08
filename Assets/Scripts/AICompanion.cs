@@ -372,6 +372,7 @@ public class AICompanion : MonoBehaviour
 
     public void EndMove(Transform tra)
     {
+        agentText.text = "Farvel :)";
         agent.SetDestination(tra.position);
     }
 
