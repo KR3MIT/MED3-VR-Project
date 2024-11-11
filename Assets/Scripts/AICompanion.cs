@@ -48,7 +48,7 @@ public class AICompanion : MonoBehaviour
         if (agent.pathStatus == NavMeshPathStatus.PathPartial || agent.pathStatus == NavMeshPathStatus.PathInvalid)
         {
             noPath = true;
-            agentText.text = "Jeg fandt ingen vej, prøv noget andet";
+            agentText.text = "Jeg fandt ingen vej, prï¿½v noget andet";
             Debug.Log("No path found, please define new action");
             agent.SetDestination(transform.position);
             actionRunning = false;
@@ -133,8 +133,8 @@ public class AICompanion : MonoBehaviour
                 types += type + ", ";
             }
 
-            agentText.text = "Der er flere objekter med typerne: " + currentTypes + ". Specificer ved at give endnu en type.";
-            Debug.Log("There are multiple objects of type " + currentTypes + ". Please specify.");
+            agentText.text = "Der er flere objekter med typerne: " + types + ". Specificer ved at give endnu en type.";
+            Debug.Log("There are multiple objects of type " + types + ". Please specify.");
             canDefine = true;
             return;
         }
@@ -143,15 +143,15 @@ public class AICompanion : MonoBehaviour
             switch (state)
             {
                 case State.MovePickup:
-                    agentText.text = "Objekt med typen " + objectType + " fundet. Går hen og samler objektet op.";
+                    agentText.text = "Objekt med typen " + objectType + " fundet. Gï¿½r hen og samler objektet op.";
                     MovePickup();
                     break;
                 case State.MovePlace:
-                    agentText.text = "Objekt med typen " + objectType + " fundet. Går hen og placere det holdte objekt.";
+                    agentText.text = "Objekt med typen " + objectType + " fundet. Gï¿½r hen og placere det holdte objekt.";
                     MovePlace();
                     break;
                 case State.Move:
-                    agentText.text = "Objekt med typen " + objectType + " fundet. Går hen til objektet.";
+                    agentText.text = "Objekt med typen " + objectType + " fundet. Gï¿½r hen til objektet.";
                     MoveTo();
                     break;
             }
@@ -166,7 +166,7 @@ public class AICompanion : MonoBehaviour
         StartActionDefinition(State.MovePlace);
         if (actionRunning)
         {
-            agentText.text = "Vent venligst til jeg er færdig med den nuværende aktion";
+            agentText.text = "Vent venligst til jeg er fï¿½rdig med den nuvï¿½rende aktion";
             return;
         }
         agentText.text = "Hvor skal jeg placere det holdte objekt?";
@@ -211,7 +211,7 @@ public class AICompanion : MonoBehaviour
         Debug.Log("Move and pickup started");
         if (actionRunning)
         {
-            agentText.text = "Vent venligst til jeg er færdig med den nuværende aktion";
+            agentText.text = "Vent venligst til jeg er fï¿½rdig med den nuvï¿½rende aktion";
             return;
         }
         agentText.text = "Hvad skal jeg samle op?";
@@ -255,10 +255,10 @@ public class AICompanion : MonoBehaviour
         StartActionDefinition(State.Move);
         if (actionRunning)
         {
-            agentText.text = "Vent venligst til jeg er færdig med den nuværende aktion";
+            agentText.text = "Vent venligst til jeg er fï¿½rdig med den nuvï¿½rende aktion";
             return;
         }
-        agentText.text = "Hvor skal jeg bevæge mig hen?";
+        agentText.text = "Hvor skal jeg bevï¿½ge mig hen?";
     }
 
     private void MoveTo()
@@ -294,7 +294,7 @@ public class AICompanion : MonoBehaviour
     {
         if (actionRunning)
         {
-            agentText.text = "Vent venligst til jeg er færdig med den nuværende aktion";
+            agentText.text = "Vent venligst til jeg er fï¿½rdig med den nuvï¿½rende aktion";
             return;
         }
         state = State.MoveNumber;
@@ -303,7 +303,7 @@ public class AICompanion : MonoBehaviour
         currentTypes.Add((ObjectType)System.Enum.Parse(typeof(ObjectType), number)); //unityevents and enums :):):):):):):)
         
         MoveToNumber();
-        agentText.text = "Bevæger mig mod tallet " + number;
+        agentText.text = "Bevï¿½ger mig mod tallet " + number;
     }
 
     private void MoveToNumber()
