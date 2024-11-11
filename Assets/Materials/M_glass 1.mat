@@ -73,7 +73,7 @@ Material:
     - _BUILTIN_QueueControl: 0
     - _BUILTIN_QueueOffset: 0
     - _MET_strengh: 0.1
-    - _Opacity: 0.8
+    - _Opacity: 0.1
     - _Opacity_texture: 0
     - _QueueControl: 0
     - _QueueOffset: 0
