@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor.SceneManagement;
 using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
@@ -22,7 +21,7 @@ public class LevelManager : MonoBehaviour
         //    Destroy(this);
         //}
 
-        SceneManager.sceneLoaded += OnSceneLoaded;
+        // SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     private void Start()
@@ -36,10 +35,10 @@ public class LevelManager : MonoBehaviour
         EndLevel(3f, "lvl 1");
     }
 
-    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        //SceneTransition.instance.FadeIn(fadeInTime);
-    }
+    // private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    // {
+    //     //SceneTransition.instance.FadeIn(fadeInTime);
+    // }
 
     /// <summary>
     /// end level with fade out
