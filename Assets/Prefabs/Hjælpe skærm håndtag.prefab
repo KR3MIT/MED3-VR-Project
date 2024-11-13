@@ -158,7 +158,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 5982347146333737245}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2406,7 +2406,8 @@ PrefabInstance:
       propertyPath: graphic
       value: 
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2424305649124228473, guid: 401828951f8d3dc41bab2558a661a489, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -2604,7 +2605,8 @@ PrefabInstance:
       propertyPath: graphic
       value: 
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2424305649124228473, guid: 401828951f8d3dc41bab2558a661a489, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -2820,7 +2822,8 @@ PrefabInstance:
       propertyPath: graphic
       value: 
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2424305649124228473, guid: 401828951f8d3dc41bab2558a661a489, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -3018,7 +3021,8 @@ PrefabInstance:
       propertyPath: graphic
       value: 
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2424305649124228473, guid: 401828951f8d3dc41bab2558a661a489, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -3234,7 +3238,8 @@ PrefabInstance:
       propertyPath: graphic
       value: 
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2424305649124228473, guid: 401828951f8d3dc41bab2558a661a489, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -3448,7 +3453,8 @@ PrefabInstance:
       propertyPath: graphic
       value: 
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2424305649124228473, guid: 401828951f8d3dc41bab2558a661a489, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -3642,7 +3648,8 @@ PrefabInstance:
       propertyPath: graphic
       value: 
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2424305649124228473, guid: 401828951f8d3dc41bab2558a661a489, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -3856,7 +3863,8 @@ PrefabInstance:
       propertyPath: graphic
       value: 
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2424305649124228473, guid: 401828951f8d3dc41bab2558a661a489, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -4070,7 +4078,8 @@ PrefabInstance:
       propertyPath: graphic
       value: 
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2424305649124228473, guid: 401828951f8d3dc41bab2558a661a489, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -4284,7 +4293,8 @@ PrefabInstance:
       propertyPath: graphic
       value: 
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2424305649124228473, guid: 401828951f8d3dc41bab2558a661a489, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -4500,7 +4510,8 @@ PrefabInstance:
       propertyPath: graphic
       value: 
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2424305649124228473, guid: 401828951f8d3dc41bab2558a661a489, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -4702,7 +4713,8 @@ PrefabInstance:
       propertyPath: graphic
       value: 
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2424305649124228473, guid: 401828951f8d3dc41bab2558a661a489, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -4900,7 +4912,8 @@ PrefabInstance:
       propertyPath: graphic
       value: 
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2424305649124228473, guid: 401828951f8d3dc41bab2558a661a489, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
