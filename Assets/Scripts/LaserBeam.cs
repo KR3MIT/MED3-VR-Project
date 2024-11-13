@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using Unity.VRTemplate;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class LaserBeam //: MonoBehaviour
 // this script was inspired by Doc: https://www.youtube.com/watch?v=pNE3rfMGEAw
@@ -18,8 +19,9 @@ public class LaserBeam //: MonoBehaviour
     GameObject laserPointer;
     LineRenderer laserLine;
     List<Vector3> laserIndices = new List<Vector3>();
+    Material decalYallow;
     // Start is called before the first frame update
-    public LaserBeam(Vector3 pos, Vector3 dir, Material material)
+    public LaserBeam(Vector3 pos, Vector3 dir, Material material, Material decalYallow)
     {
         this.laserLine = new LineRenderer();
         this.laserPointer = new GameObject();
@@ -34,7 +36,10 @@ public class LaserBeam //: MonoBehaviour
         this.laserLine.startColor = Color.red;
         this.laserLine.endColor = Color.red;
 
+        this.decalYallow = decalYallow;
+
         CastLaser(pos, dir, laserLine);
+        this.decalYallow = decalYallow;
     }
     void CastLaser(Vector3 pos, Vector3 dir, LineRenderer laserLine)
     {
@@ -79,7 +84,7 @@ public class LaserBeam //: MonoBehaviour
             laserIndices.Add(hitInfo.point);
             UpdateLaser();
         }
-
+        // if the laser hits the button, activate the barrier and change decal material
         if (hitInfo.collider.gameObject.tag == "YellowButton" && !first1)
         {
             GameObject yellowCube = GameObject.Find("YellowBarrier");
@@ -87,7 +92,15 @@ public class LaserBeam //: MonoBehaviour
             yellowBarrier.BarrierActive();
             first1 = true;
 
+           
 
+             foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Decal"))
+            {
+                obj.GetComponent<DecalProjector>().material = decalYallow;
+            }   
+           
+
+              
 
         }
         if (hitInfo.collider.gameObject.tag == "GreenButton" && !first)

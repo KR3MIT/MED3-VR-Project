@@ -9,6 +9,7 @@ TagManager:
   - YellowButton
   - GreenButton
   - AI
+  - Decal
   layers:
   - Default
   - TransparentFX

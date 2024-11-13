@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: yello
+  m_Name: yellow
   m_Shader: {fileID: -6465566751694194690, guid: 440d44343fadf704fa3e17e996f6a680, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
