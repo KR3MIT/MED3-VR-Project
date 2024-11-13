@@ -10,8 +10,6 @@ public class LaserBeam //: MonoBehaviour
 {
     Vector3 pos, dir;
     
-
-
     //everything except layer 6 which is object
     LayerMask rayLayers = ~(1 << 6);
     static bool first,first1 = false;

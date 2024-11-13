@@ -51,10 +51,11 @@ Material:
     m_Ints: []
     m_Floats:
     - _Color_strengh: 5
-    - _Opacity: 1
+    - _Opacity: 3
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _noise_scale: 30
+    - _SPEED: 1
+    - _noise_scale: 15
     m_Colors:
     - _Color: {r: 1, g: 0, b: 0, a: 0}
     - _Offset: {r: -1, g: 1, b: 0, a: 0}
