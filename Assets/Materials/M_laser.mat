@@ -55,10 +55,10 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _SPEED: 1
-    - _Scale: 10
+    - _Scale: 50
     - _noise_scale: 15
     m_Colors:
     - _Color: {r: 2, g: 0, b: 0, a: 0}
     - _Offset: {r: -1, g: 1, b: 0, a: 0}
-    - _SpeedAndDirection: {r: 0.1, g: 0.1, b: 0, a: 0}
+    - _SpeedAndDirection: {r: -0.1, g: 0.1, b: 0, a: 0}
   m_BuildTextureStacks: []
