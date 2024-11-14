@@ -27,7 +27,7 @@ Material:
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 2
-  m_EnableInstancingVariants: 0
+  m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
@@ -51,12 +51,14 @@ Material:
     m_Ints: []
     m_Floats:
     - _Color_strengh: 5
-    - _Opacity: 3
+    - _Opacity: 0
     - _QueueControl: 0
     - _QueueOffset: 0
     - _SPEED: 1
+    - _Scale: 10
     - _noise_scale: 15
     m_Colors:
-    - _Color: {r: 1, g: 0, b: 0, a: 0}
+    - _Color: {r: 2, g: 0, b: 0, a: 0}
     - _Offset: {r: -1, g: 1, b: 0, a: 0}
+    - _SpeedAndDirection: {r: 0.1, g: 0.1, b: 0, a: 0}
   m_BuildTextureStacks: []
