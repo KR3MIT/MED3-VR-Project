@@ -150,7 +150,7 @@ public class AICompanion : MonoBehaviour
                 types += GetUserFriendlyName(type) + ", ";
             }
 
-            agentText.text = "Der er flere objekter med typerne: " + types + ". Specificer ved at give endnu en type.";
+            agentText.text = "Der er mere end en" + types + ", hvilken " + types + " mener du?" ;
             Debug.Log("There are multiple objects of type " + types + ". Please specify.");
             canDefine = true;
             return;
@@ -161,15 +161,15 @@ public class AICompanion : MonoBehaviour
             switch (state)
             {
                 case State.MovePickup:
-                    agentText.text = "Objekt med typen " + friendlyName + " fundet. G�r hen og samler objektet op.";
+                    agentText.text = friendlyName + " fundet. G�r hen og samler objektet op.";
                     MovePickup();
                     break;
                 case State.MovePlace:
-                    agentText.text = "Objekt med typen " + friendlyName + " fundet. G�r hen og placere det holdte objekt.";
+                    agentText.text = friendlyName + " fundet. G�r hen og placere det holdte objekt.";
                     MovePlace();
                     break;
                 case State.Move:
-                    agentText.text = "Objekt med typen " + friendlyName + " fundet. G�r hen til objektet.";
+                    agentText.text = friendlyName + " fundet. G�r hen til objektet.";
                     MoveTo();
                     break;
             }
