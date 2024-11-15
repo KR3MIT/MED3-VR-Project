@@ -12,7 +12,7 @@ public class PressurePad : MonoBehaviour
         {
             foreach (GameObject obj in objectToRotate) 
             {
-                obj.transform.Rotate(0, 15, 0); 
+                obj.transform.Rotate(0, 45, 0); 
             }
             //objectToRotate.transform.Rotate(0, 15, 0);
             //do the thing!!
