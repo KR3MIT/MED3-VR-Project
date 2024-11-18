@@ -11,6 +11,7 @@ public class TaskCondition : MonoBehaviour
     public bool TutMode = false;
     public bool TutModeStartActive = false;
     public GameObject HandGesureManager;
+    public Soundmanager soundmanager;
 
 
     // Start is called before the first frame update
@@ -42,6 +43,7 @@ public class TaskCondition : MonoBehaviour
         continuepannel.SetActive(true);
         if(door != null)
         door.SetTrigger("open");
+        Soundmanager.instance.PlaySound(0);
     }
 
     public void ToggleTutMode()
