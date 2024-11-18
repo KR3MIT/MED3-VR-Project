@@ -189,6 +189,12 @@ public class AICompanion : MonoBehaviour
     #region move and place
     public void MoveAndPlaceStart()
     {
+        if (carryingObject == null)
+        {
+            agentText.text = "Kan ikke pladsere noget da jeg ikke holder noget, saml noget op først";
+            Debug.Log("No object to place");
+            return;
+        }
         StartActionDefinition(State.MovePlace);
         if (actionRunning)
         {
@@ -232,7 +238,12 @@ public class AICompanion : MonoBehaviour
     #region move and pickup
     public void MoveAndPickupStart()
     {
-        Debug.Log("HELLLOOOO????");
+        if(carryingObject != null)
+        {
+            agentText.text = "Jeg holder allerede noget, placere det før du samler noget andet op.";
+            Debug.Log("Already holding object");
+            return;
+        }
         StartActionDefinition(State.MovePickup);
         Debug.Log("Move and pickup started");
         if (actionRunning)
