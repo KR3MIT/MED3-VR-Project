@@ -9,16 +9,18 @@ public class ShowCurrentSign : MonoBehaviour
     public TMP_Text tmptext;
     public Text unitytext;
 
+    public bool isTMP;
+
     private string originalText;
 
 
     private void Start()
     {
-        if (unitytext == null)
+        if (isTMP)
         {
             originalText = tmptext.text;
         }
-        else if (tmptext == null)
+        else
         {
             originalText = unitytext.text;
         }
@@ -26,13 +28,13 @@ public class ShowCurrentSign : MonoBehaviour
 
 public void UpdateText(string sign)
     {
-        if(tmptext == null)
+        if(!isTMP)
         {
             unitytext.text = originalText + sign;
             return;
         }
 
-        if(unitytext == null)
+        if(isTMP)
         {
             tmptext.text = originalText + sign;
             return;
