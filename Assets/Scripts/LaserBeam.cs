@@ -93,12 +93,10 @@ public class LaserBeam //: MonoBehaviour
             yellowBarrier.BarrierActive();
             first1 = true;
 
-           
-
              foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Decal"))
-            {
+             {
                 obj.GetComponent<DecalProjector>().material = decalYallow;
-            }   
+             }   
            
 
               

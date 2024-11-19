@@ -6,13 +6,13 @@ public class LaserShooter : MonoBehaviour
 {
     public Material material;
     LaserBeam laserBeam;
-
-    public Material yello;
+    public Material yellow;
 
     // Update is called once per frame
     void Update()
     {
+        
         Destroy(GameObject.Find("Laser"));
-        laserBeam = new LaserBeam(gameObject.transform.position, gameObject.transform.right, material, yello);
+        laserBeam = new LaserBeam(gameObject.transform.position, gameObject.transform.right, material, yellow);
     }
 }
