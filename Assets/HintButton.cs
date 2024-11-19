@@ -5,12 +5,18 @@ using UnityEngine;
 public class HintButton : MonoBehaviour
 {
     public int delay = 60;
+    public bool startDelayOnStart =false;
 
     private void Start()
     {
         foreach (Transform transform in transform)
         {
             transform.gameObject.SetActive(false);
+        }
+
+        if (startDelayOnStart)
+        {
+            StartDelay();
         }
     }
 

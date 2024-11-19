@@ -40,9 +40,11 @@ public class HintSystemPuzzle1 : MonoBehaviour
 
         doorOpen = door.doorOpen;
         carryingObject = aiCompanion.carryingObject;
-        if (!aiCompanion.carryingObject.HasType(ObjectInfo.ObjectType.Brown))//only the brown object should be carried after the door is open
-        {
-            carryingObject = false;
+        if(carryingObject){
+            if (!aiCompanion.carryingObject.HasType(ObjectInfo.ObjectType.Brown))//only the brown object should be carried after the door is open
+            {
+                carryingObject = false;
+            }
         }
 
 
