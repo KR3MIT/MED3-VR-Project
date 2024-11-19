@@ -1,11 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Door : MonoBehaviour
 {
+    public event Action OnDoorOpen;
+
     public Transform doorOpenPosition;
     public float doorSpeed = 1f;
+    public bool doorOpen = false;
 
     private void Start()
     {
@@ -33,5 +37,7 @@ public class Door : MonoBehaviour
         }
 
         Debug.Log("Door opened");
+        doorOpen = true;
+        OnDoorOpen?.Invoke();
     }
 }
