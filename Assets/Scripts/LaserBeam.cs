@@ -97,9 +97,7 @@ public class LaserBeam //: MonoBehaviour
              {
                 obj.GetComponent<DecalProjector>().material = decalYallow;
              }   
-           
-
-              
+          
 
         }
         if (hitInfo.collider.gameObject.tag == "GreenButton" && !first)
