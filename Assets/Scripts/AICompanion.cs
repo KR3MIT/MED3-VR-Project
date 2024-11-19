@@ -32,6 +32,8 @@ public class AICompanion : MonoBehaviour
         MoveNumber
     }
 
+    public bool isActive = true;
+
     public State state = State.Idle;
 
     private Dictionary<ObjectType, string> userFriendlyNames = new Dictionary<ObjectType, string>
@@ -55,6 +57,11 @@ public class AICompanion : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         //StartCoroutine(test());
+    }
+
+    public void SetIsActive(bool active)
+    {
+        isActive = active;
     }
 
     private void Update()
@@ -114,6 +121,11 @@ public class AICompanion : MonoBehaviour
 
     public void StartActionDefinition(State stateToStart)
     {
+        if(!isActive)
+        {
+            return;
+        }
+
         if (actionRunning)
         {
             return;
@@ -128,6 +140,11 @@ public class AICompanion : MonoBehaviour
 
     public void DefineObjectType(string objectTypeString)
     {
+        if(!isActive)
+        {
+            return;
+        }
+        
         if (!canDefine)
         {
             return;
@@ -193,6 +210,11 @@ public class AICompanion : MonoBehaviour
     #region move and place
     public void MoveAndPlaceStart()
     {
+        if(!isActive)
+        {
+            return;
+        }
+
         if (carryingObject == null)
         {
             agentText.text = "Kan ikke pladsere noget da jeg ikke holder noget, saml noget op først";
@@ -242,6 +264,11 @@ public class AICompanion : MonoBehaviour
     #region move and pickup
     public void MoveAndPickupStart()
     {
+        if(!isActive)
+        {
+            return;
+        }
+
         if(carryingObject != null)
         {
             agentText.text = "Jeg holder allerede noget, placere det før du samler noget andet op.";
