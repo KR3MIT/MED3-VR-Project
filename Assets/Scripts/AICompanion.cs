@@ -1,13 +1,17 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using ObjectType = ObjectInfo.ObjectType;
 
 public class AICompanion : MonoBehaviour
 {
+    public event Action OnCarryingObjectSet;
+
     int currentLevel = 0;
     private NavMeshAgent agent;
 
@@ -459,6 +463,12 @@ public class AICompanion : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    public void SetCarryingObject()
+    {
+        carryingObject = null;
+        OnCarryingObjectSet?.Invoke();
     }
     #endregion
 }
