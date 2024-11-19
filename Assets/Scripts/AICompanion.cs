@@ -1,13 +1,17 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using ObjectType = ObjectInfo.ObjectType;
 
 public class AICompanion : MonoBehaviour
 {
+    public event Action OnCarryingObjectSet;
+
     int currentLevel = 0;
     private NavMeshAgent agent;
 
@@ -379,7 +383,8 @@ public class AICompanion : MonoBehaviour
     {
         obj.transform.SetParent(transform);
         obj.transform.localPosition = Vector3.zero + new Vector3(0, 1, 1f);
-        carryingObject = obj;
+        //carryingObject = obj;
+        SetCarryingObject(obj);
         obj.GetComponent<Rigidbody>().isKinematic = true;
     }
 
@@ -387,7 +392,8 @@ public class AICompanion : MonoBehaviour
     {
         carryingObject.GetComponent<Rigidbody>().isKinematic = false;
         carryingObject.transform.SetParent(null);
-        carryingObject = null;
+        //carryingObject = null;
+        SetCarryingObject(null);
     }
 
     private void Place(Transform targetTransform)
@@ -395,7 +401,8 @@ public class AICompanion : MonoBehaviour
         carryingObject.GetComponent<Rigidbody>().isKinematic = false;
         carryingObject.transform.SetParent(null);
         carryingObject.transform.position = new Vector3(targetTransform.position.x, carryingObject.transform.position.y, targetTransform.position.z);
-        carryingObject = null;
+        //carryingObject = null;
+        SetCarryingObject(null);
     }
 
     public void Hello()
@@ -459,6 +466,12 @@ public class AICompanion : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    public void SetCarryingObject(ObjectInfo info)
+    {
+        carryingObject = info;
+        OnCarryingObjectSet?.Invoke();
     }
     #endregion
 }
