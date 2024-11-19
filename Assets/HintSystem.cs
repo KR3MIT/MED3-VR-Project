@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public class HintSystem : MonoBehaviour
 {
-    AICompanion aiCompanion;
+    public AICompanion aiCompanion;
     public GameObject hint1;
     public GameObject hint2;
     public GameObject hintPanel;
@@ -15,7 +15,7 @@ public class HintSystem : MonoBehaviour
 
     public void Start()
     {
-        aiCompanion = GameObject.FindObjectOfType<AICompanion>();
+        //aiCompanion = GameObject.FindObjectOfType<AICompanion>();
         aiCompanion.OnCarryingObjectSet += CheckCarryingObject;
     }
     public void EnableHint()

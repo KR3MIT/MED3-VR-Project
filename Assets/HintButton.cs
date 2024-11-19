@@ -22,6 +22,7 @@ public class HintButton : MonoBehaviour
     private IEnumerator HintDelay(int time)
     {
         yield return new WaitForSeconds(time);
+        
         foreach (Transform transform in transform)
         {
             transform.gameObject.SetActive(true);
