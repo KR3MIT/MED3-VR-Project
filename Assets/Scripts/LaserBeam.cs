@@ -9,7 +9,7 @@ public class LaserBeam //: MonoBehaviour
 // this script was inspired by Doc: https://www.youtube.com/watch?v=pNE3rfMGEAw
 {
     Vector3 pos, dir;
-    
+    private float maxDistance = 100f;
     //everything except layer 6 which is object
     LayerMask rayLayers = ~(1 << 6);
     static bool first,first1 = false;
@@ -19,14 +19,15 @@ public class LaserBeam //: MonoBehaviour
     List<Vector3> laserIndices = new List<Vector3>();
     Material decalYallow;
     // Start is called before the first frame update
-    public LaserBeam(Vector3 pos, Vector3 dir, Material material, Material decalYallow)
+
+    public LaserBeam(Vector3 pos, Vector3 dir, Material material,Material decalYallow)
     {
         this.laserLine = new LineRenderer();
         this.laserPointer = new GameObject();
         this.laserPointer.name = "Laser";
         this.pos = pos;
         this.dir = dir;
-
+        
         this.laserLine = this.laserPointer.AddComponent(typeof(LineRenderer)) as LineRenderer;
         this.laserLine.startWidth = 0.1f;
         this.laserLine.endWidth = 0.1f;
@@ -39,6 +40,8 @@ public class LaserBeam //: MonoBehaviour
         CastLaser(pos, dir, laserLine);
         this.decalYallow = decalYallow;
     }
+
+    
     void CastLaser(Vector3 pos, Vector3 dir, LineRenderer laserLine)
     {
         laserIndices.Add(pos);
@@ -52,7 +55,7 @@ public class LaserBeam //: MonoBehaviour
         }
         else
         {
-            laserIndices.Add(ray.GetPoint(30));
+            laserIndices.Add(ray.GetPoint(maxDistance));
             UpdateLaser();
         }
 
@@ -90,12 +93,10 @@ public class LaserBeam //: MonoBehaviour
             yellowBarrier.BarrierActive();
             first1 = true;
 
-           
-
              foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Decal"))
-            {
+             {
                 obj.GetComponent<DecalProjector>().material = decalYallow;
-            }   
+             }   
            
 
               
