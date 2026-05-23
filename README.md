@@ -1,5 +1,5 @@
-# BachelorProject
-Medialogy 6th. semester project
+# SignLab VR
+Medialogy 3th. semester project
 
 Department of Architecture, Design & Media Technology 
 [Aalborg University](http://www.aau.dk)
