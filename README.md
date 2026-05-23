@@ -9,8 +9,6 @@ Department of Architecture, Design & Media Technology
 
 Video showcase [AV](https://youtu.be/vlQseZxayqo "Video showcase")
 
-Play the game in a desktop browser [mattethisen.itch.io/udenrigsministrene](https://mattethisen.itch.io/udenrigsministrene "Newest release web build of project")
-
 Made in Unity (pre 6)
 (repo does not include executable, must build self)
 
