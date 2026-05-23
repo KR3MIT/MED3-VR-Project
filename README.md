@@ -1,6 +1,9 @@
 # SignLab VR
 Medialogy 3th. semester project
 
+Danish sign language learning software made for vr with focus on execution and context usage of sign language, contained in a puzzle game wrapper.
+
+
 Department of Architecture, Design & Media Technology 
 [Aalborg University](http://www.aau.dk)
 
