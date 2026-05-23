@@ -15,7 +15,7 @@ Made in Unity (pre 6)
 installation tutorial in report (not attached so gg ig)
 
 Hardware required to play:
-- Meta Quest 2 or 3 in developer mode
+- Meta Quest 2 or 3 in developer mode and handtracking enabled
 - PC and sidequest
 
 ## Developers;
